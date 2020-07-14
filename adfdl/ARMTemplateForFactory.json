@@ -325,6 +325,9 @@
 						]
 					}
 				],
+				"folder": {
+					"name": "Section 5"
+				},
 				"annotations": []
 			},
 			"dependsOn": [
@@ -332,6 +335,30 @@
 				"[concat(variables('factoryId'), '/datasets/DSDelimitedTextDL_Customer')]",
 				"[concat(variables('factoryId'), '/datasets/DS_DelimitedText_Blob_Custemer')]"
 			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Demo Pipeline')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "es el tutorial",
+				"activities": [
+					{
+						"name": "Wait",
+						"type": "Wait",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"waitTimeInSeconds": 1
+						}
+					}
+				],
+				"folder": {
+					"name": "Section 5"
+				},
+				"annotations": []
+			},
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/ForEach Demo')]",
@@ -366,6 +393,9 @@
 						}
 					}
 				],
+				"folder": {
+					"name": "Section 5"
+				},
 				"annotations": []
 			},
 			"dependsOn": [
@@ -411,6 +441,9 @@
 						}
 					}
 				],
+				"folder": {
+					"name": "Section 5"
+				},
 				"annotations": []
 			},
 			"dependsOn": [
@@ -450,6 +483,9 @@
 						}
 					}
 				],
+				"folder": {
+					"name": "Section 5"
+				},
 				"annotations": []
 			},
 			"dependsOn": [
@@ -488,6 +524,9 @@
 						}
 					}
 				],
+				"folder": {
+					"name": "Section 10"
+				},
 				"annotations": []
 			},
 			"dependsOn": [
@@ -510,6 +549,9 @@
 						}
 					}
 				],
+				"folder": {
+					"name": "Section 5"
+				},
 				"annotations": []
 			},
 			"dependsOn": []
@@ -692,6 +734,43 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/DS_inputAzureDelimitedText')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_AzureBlobStorageDemo",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "Country.csv",
+						"container": "input"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "Rank",
+						"type": "String"
+					},
+					{
+						"name": "Country",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LS_AzureBlobStorageDemo')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/LSAzureBlobStorageConnection')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -735,27 +814,6 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/Demo Pipeline')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"description": "es el tutorial",
-				"activities": [
-					{
-						"name": "Wait",
-						"type": "Wait",
-						"dependsOn": [],
-						"userProperties": [],
-						"typeProperties": {
-							"waitTimeInSeconds": 1
-						}
-					}
-				],
-				"annotations": []
-			},
-			"dependsOn": []
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/LS_AzureBlobStorageDemo')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -767,43 +825,6 @@
 				}
 			},
 			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DS_inputAzureDelimitedText')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "LS_AzureBlobStorageDemo",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": "Country.csv",
-						"container": "input"
-					},
-					"columnDelimiter": ",",
-					"escapeChar": "\\",
-					"firstRowAsHeader": true,
-					"quoteChar": "\""
-				},
-				"schema": [
-					{
-						"name": "Rank",
-						"type": "String"
-					},
-					{
-						"name": "Country",
-						"type": "String"
-					}
-				]
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/LS_AzureBlobStorageDemo')]"
-			]
 		}
 	]
 }
