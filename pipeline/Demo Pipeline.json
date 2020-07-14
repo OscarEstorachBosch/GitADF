@@ -1,6 +1,7 @@
 {
 	"name": "Demo Pipeline",
 	"properties": {
+		"description": "es el tutorial",
 		"annotations": []
 	}
 }
