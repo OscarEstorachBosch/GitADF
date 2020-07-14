@@ -12,6 +12,9 @@
 				}
 			}
 		],
+		"folder": {
+			"name": "Section 5"
+		},
 		"annotations": []
 	},
 	"type": "Microsoft.DataFactory/factories/pipelines"
