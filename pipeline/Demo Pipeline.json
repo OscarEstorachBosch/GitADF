@@ -2,6 +2,17 @@
 	"name": "Demo Pipeline",
 	"properties": {
 		"description": "es el tutorial",
+		"activities": [
+			{
+				"name": "Wait",
+				"type": "Wait",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"waitTimeInSeconds": 1
+				}
+			}
+		],
 		"annotations": []
 	}
 }
