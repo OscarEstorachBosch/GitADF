@@ -23,6 +23,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'LS_AzureBlobStorageDemo'"
 		},
+		"LS_BlobStorage_PJA_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LS_BlobStorage_PJA'"
+		},
 		"LSAzureDataLakeStorageConnection_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://storageadfdl.dfs.core.windows.net"
@@ -131,6 +135,19 @@
 				"type": "AzureBlobStorage",
 				"typeProperties": {
 					"connectionString": "[parameters('LS_AzureBlobStorageDemo_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/LS_BlobStorage_PJA')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('LS_BlobStorage_PJA_connectionString')]"
 				}
 			},
 			"dependsOn": []
@@ -347,6 +364,42 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/LS_AzureBlobStorageDemo')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_DelimitedText_TM_OTS')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_BlobStorage_PJA",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "DS_PJA"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "tm_ots.csv",
+						"container": "pja"
+					},
+					"columnDelimiter": ";",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "tm_ots_id;id_emp;mand;id_ot;ancho;cantidad;cantidad_prevista;cantidad_real;cantidad_rprev;consum_stk;dta_ult_op;duracion;estado;factor_impl;fase;fcic;fecha_entrega;finished_at;started_at;genera_stk;grup_impl;id_almacen;id_art;id_incid;id_lote;id_of;maq_prevista;medidas;metros;modo_impl;no_expor;num_ops;ops_previsto;opsp_previsto;ord;rend_empl;rend_maq;rend_oper;rend_ot;rend_prep;ritmo;ritmo_real;sid;tarjeta;tiempo;tiempo_previsto;tiempo_real;tintas;type;tprep;tprep_previsto;txst;empl_previsto;id_emple;initial_latitude;initial_longitude;final_longitude;final_latitude;id_puesto;id_cat;id_sec;duracion_sec;segundos;minutos;horas;dias;id_tipo_material;tipo_material;initial_keydata;keyidart;nnoo1;nnoo2;nnoo3;nnoo4;nnoo5;nnoo6;zva0_10;zva1_10;zva2_10;zvc0_10;zvc1_10;zvc2_10;zvc3_10;zvc4_10;zvd0_10;zvd1_10;zvd2_10;zvd3_10;zvd4_10;zvd5_10;zvd6_10;nnoo19;nnoo20;nnoo21;nnoo22;nnoo23;nnoo24;nnoo25;nnoo26;nnoo27;nnoo28;nnoo29;nnoo34;nnoo35;nnoo36;nnoo37;nnoo38;nnoo39;nnoo40;nnoo41;nnoo42;nnoo43;nnoo44;nnoo45;nnoo46;nnoo47;nnoo48;nnoo49;nnoo50;nnoo51;nnoo52;nnoo53;nnoo54;nnoo55;nnoo56;nnoo57;nnoo58;nnoo59;nnoo60;nnoo61;nnoo64;nnoo67;nnoo68;usuario;crtim;ultimo_mov;fecha;id_motivo_desprog;nextout;nextoutinicio;dta_upd_est;nextoutkm;id_sec_of;anulada;description;belt;var1;var2;final_keydata;id_ot_internal;tm_incid_maquina_id;mant_type_planned;mant_type;tasks;id_cliente;priority;tm_empleados_id;read;id_cent_ot;id_cliente_var;ot_erp;punctuality;punctuality_margin;punctuality_margin_sec;empty_km;load_quantity;net_duration_sec;nnoo30;nnoo31;nnoo32;nnoo33;nnoo69;nnoo7;nnoo71;nnoo75;nnoo76;nnoo8;nnoo80;nnoo82;nnoo84;nnoo9;updatable;zva3_10;zva4_10;zva5_10;created_at;updated_at;created_by;id_cliente_bien;tm_clientes_id;distance;calc_mode;tm_materiales_id;simulation;related_tm_ots_id;confirmed_at;confirmed_by;tm_maquinas_id;keycliente;tm_empresas_id;tm_categoria_id;tm_secciones_id;motivos_desprog;id_anulacio",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LS_BlobStorage_PJA')]"
 			]
 		},
 		{

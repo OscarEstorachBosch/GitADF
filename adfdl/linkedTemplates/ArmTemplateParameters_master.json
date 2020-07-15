@@ -17,6 +17,9 @@
 		"LS_AzureBlobStorageDemo_connectionString": {
 			"value": ""
 		},
+		"LS_BlobStorage_PJA_connectionString": {
+			"value": ""
+		},
 		"LSAzureDataLakeStorageConnection_properties_typeProperties_url": {
 			"value": "https://storageadfdl.dfs.core.windows.net"
 		},
