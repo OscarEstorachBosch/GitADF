@@ -1,0 +1,963 @@
+{
+	"name": "DSSqlTableTM_ots",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LSAzureSqlDatabase_connection",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS_PJA"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "tm_ots_id",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "id_emp",
+				"type": "varchar"
+			},
+			{
+				"name": "mand",
+				"type": "varchar"
+			},
+			{
+				"name": "id_ot",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "ancho",
+				"type": "varchar"
+			},
+			{
+				"name": "cantidad",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "cantidad_prevista",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "cantidad_real",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "cantidad_rprev",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "consum_stk",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "dta_ult_op",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "duracion",
+				"type": "varchar"
+			},
+			{
+				"name": "estado",
+				"type": "varchar"
+			},
+			{
+				"name": "factor_impl",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "fase",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "fcic",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "fecha_entrega",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "finished_at",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "started_at",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "genera_stk",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "grup_impl",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "id_almacen",
+				"type": "varchar"
+			},
+			{
+				"name": "id_art",
+				"type": "varchar"
+			},
+			{
+				"name": "id_incid",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "id_lote",
+				"type": "varchar"
+			},
+			{
+				"name": "id_of",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "maq_prevista",
+				"type": "varchar"
+			},
+			{
+				"name": "medidas",
+				"type": "varchar"
+			},
+			{
+				"name": "metros",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "modo_impl",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "no_expor",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "num_ops",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "ops_previsto",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "opsp_previsto",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "ord",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "rend_empl",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "rend_maq",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "rend_oper",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "rend_ot",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "rend_prep",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "ritmo",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "ritmo_real",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "sid",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "tarjeta",
+				"type": "varchar"
+			},
+			{
+				"name": "tiempo",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "tiempo_previsto",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "tiempo_real",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "tintas",
+				"type": "varchar"
+			},
+			{
+				"name": "type",
+				"type": "varchar"
+			},
+			{
+				"name": "tprep",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "tprep_previsto",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "txst",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "empl_previsto",
+				"type": "varchar"
+			},
+			{
+				"name": "id_emple",
+				"type": "varchar"
+			},
+			{
+				"name": "initial_latitude",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "initial_longitude",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "final_longitude",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "final_latitude",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "id_puesto",
+				"type": "varchar"
+			},
+			{
+				"name": "id_cat",
+				"type": "varchar"
+			},
+			{
+				"name": "id_sec",
+				"type": "varchar"
+			},
+			{
+				"name": "duracion_sec",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "segundos",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "minutos",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "horas",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "dias",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "id_tipo_material",
+				"type": "varchar"
+			},
+			{
+				"name": "tipo_material",
+				"type": "varchar"
+			},
+			{
+				"name": "initial_keydata",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "keyidart",
+				"type": "varchar"
+			},
+			{
+				"name": "nnoo1",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nnoo2",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nnoo3",
+				"type": "varchar"
+			},
+			{
+				"name": "nnoo4",
+				"type": "varchar"
+			},
+			{
+				"name": "nnoo5",
+				"type": "varchar"
+			},
+			{
+				"name": "nnoo6",
+				"type": "varchar"
+			},
+			{
+				"name": "zva0_10",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "zva1_10",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "zva2_10",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "zvc0_10",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "zvc1_10",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "zvc2_10",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "zvc3_10",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "zvc4_10",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "zvd0_10",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "zvd1_10",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "zvd2_10",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "zvd3_10",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "zvd4_10",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "zvd5_10",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "zvd6_10",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nnoo19",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nnoo20",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nnoo21",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nnoo22",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nnoo23",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nnoo24",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nnoo25",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nnoo26",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nnoo27",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nnoo28",
+				"type": "varchar"
+			},
+			{
+				"name": "nnoo29",
+				"type": "varchar"
+			},
+			{
+				"name": "nnoo34",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nnoo35",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nnoo36",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nnoo37",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nnoo38",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nnoo39",
+				"type": "varchar"
+			},
+			{
+				"name": "nnoo40",
+				"type": "varchar"
+			},
+			{
+				"name": "nnoo41",
+				"type": "varchar"
+			},
+			{
+				"name": "nnoo42",
+				"type": "varchar"
+			},
+			{
+				"name": "nnoo43",
+				"type": "varchar"
+			},
+			{
+				"name": "nnoo44",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nnoo45",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nnoo46",
+				"type": "varchar"
+			},
+			{
+				"name": "nnoo47",
+				"type": "varchar"
+			},
+			{
+				"name": "nnoo48",
+				"type": "varchar"
+			},
+			{
+				"name": "nnoo49",
+				"type": "varchar"
+			},
+			{
+				"name": "nnoo50",
+				"type": "varchar"
+			},
+			{
+				"name": "nnoo51",
+				"type": "varchar"
+			},
+			{
+				"name": "nnoo52",
+				"type": "varchar"
+			},
+			{
+				"name": "nnoo53",
+				"type": "varchar"
+			},
+			{
+				"name": "nnoo54",
+				"type": "varchar"
+			},
+			{
+				"name": "nnoo55",
+				"type": "varchar"
+			},
+			{
+				"name": "nnoo56",
+				"type": "varchar"
+			},
+			{
+				"name": "nnoo57",
+				"type": "varchar"
+			},
+			{
+				"name": "nnoo58",
+				"type": "varchar"
+			},
+			{
+				"name": "nnoo59",
+				"type": "varchar"
+			},
+			{
+				"name": "nnoo60",
+				"type": "varchar"
+			},
+			{
+				"name": "nnoo61",
+				"type": "varchar"
+			},
+			{
+				"name": "nnoo64",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nnoo67",
+				"type": "varchar"
+			},
+			{
+				"name": "nnoo68",
+				"type": "varchar"
+			},
+			{
+				"name": "usuario",
+				"type": "varchar"
+			},
+			{
+				"name": "crtim",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "ultimo_mov",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "fecha",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "id_motivo_desprog",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "nextout",
+				"type": "varchar"
+			},
+			{
+				"name": "nextoutinicio",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "dta_upd_est",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "nextoutkm",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "id_sec_of",
+				"type": "varchar"
+			},
+			{
+				"name": "anulada",
+				"type": "varchar"
+			},
+			{
+				"name": "description",
+				"type": "varchar"
+			},
+			{
+				"name": "belt",
+				"type": "varchar"
+			},
+			{
+				"name": "var1",
+				"type": "varchar"
+			},
+			{
+				"name": "var2",
+				"type": "varchar"
+			},
+			{
+				"name": "final_keydata",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "id_ot_internal",
+				"type": "varchar"
+			},
+			{
+				"name": "tm_incid_maquina_id",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "mant_type_planned",
+				"type": "varchar"
+			},
+			{
+				"name": "mant_type",
+				"type": "varchar"
+			},
+			{
+				"name": "tasks",
+				"type": "varchar"
+			},
+			{
+				"name": "id_cliente",
+				"type": "varchar"
+			},
+			{
+				"name": "priority",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "tm_empleados_id",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "read1",
+				"type": "bit"
+			},
+			{
+				"name": "id_cent_ot",
+				"type": "varchar"
+			},
+			{
+				"name": "id_cliente_var",
+				"type": "varchar"
+			},
+			{
+				"name": "ot_erp",
+				"type": "varchar"
+			},
+			{
+				"name": "punctuality",
+				"type": "bit"
+			},
+			{
+				"name": "punctuality_margin",
+				"type": "varchar"
+			},
+			{
+				"name": "punctuality_margin_sec",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "empty_km",
+				"type": "decimal",
+				"precision": 30,
+				"scale": 8
+			},
+			{
+				"name": "load_quantity",
+				"type": "decimal",
+				"precision": 30,
+				"scale": 8
+			},
+			{
+				"name": "net_duration_sec",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "nnoo30",
+				"type": "varchar"
+			},
+			{
+				"name": "nnoo31",
+				"type": "varchar"
+			},
+			{
+				"name": "nnoo32",
+				"type": "varchar"
+			},
+			{
+				"name": "nnoo33",
+				"type": "varchar"
+			},
+			{
+				"name": "nnoo69",
+				"type": "varchar"
+			},
+			{
+				"name": "nnoo7",
+				"type": "varchar"
+			},
+			{
+				"name": "nnoo71",
+				"type": "varchar"
+			},
+			{
+				"name": "nnoo75",
+				"type": "varchar"
+			},
+			{
+				"name": "nnoo76",
+				"type": "varchar"
+			},
+			{
+				"name": "nnoo8",
+				"type": "varchar"
+			},
+			{
+				"name": "nnoo80",
+				"type": "varchar"
+			},
+			{
+				"name": "nnoo82",
+				"type": "varchar"
+			},
+			{
+				"name": "nnoo84",
+				"type": "varchar"
+			},
+			{
+				"name": "nnoo9",
+				"type": "varchar"
+			},
+			{
+				"name": "updatable",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "zva3_10",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "zva4_10",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "zva5_10",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "created_at",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "updated_at",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "created_by",
+				"type": "varchar"
+			},
+			{
+				"name": "id_cliente_bien",
+				"type": "varchar"
+			},
+			{
+				"name": "tm_clientes_id",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "distance",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "calc_mode",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "tm_materiales_id",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "simulation",
+				"type": "bit"
+			},
+			{
+				"name": "related_tm_ots_id",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "confirmed_at",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "confirmed_by",
+				"type": "varchar"
+			},
+			{
+				"name": "tm_maquinas_id",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "keycliente",
+				"type": "varchar"
+			},
+			{
+				"name": "tm_empresas_id",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "tm_categoria_id",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "tm_secciones_id",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "motivos_desprog",
+				"type": "varchar"
+			},
+			{
+				"name": "id_anulacio",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "tm_ots"
+		}
+	}
+}
