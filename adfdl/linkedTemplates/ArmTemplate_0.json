@@ -37,53 +37,6 @@
 	},
 	"resources": [
 		{
-			"name": "[concat(parameters('factoryName'), '/Demo Pipeline')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"description": "es el tutorial",
-				"activities": [
-					{
-						"name": "Wait",
-						"type": "Wait",
-						"dependsOn": [],
-						"userProperties": [],
-						"typeProperties": {
-							"waitTimeInSeconds": 1
-						}
-					}
-				],
-				"folder": {
-					"name": "Section 5"
-				},
-				"annotations": []
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/wait')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Wait Demo",
-						"type": "Wait",
-						"dependsOn": [],
-						"userProperties": [],
-						"typeProperties": {
-							"waitTimeInSeconds": 5
-						}
-					}
-				],
-				"folder": {
-					"name": "Section 5"
-				},
-				"annotations": []
-			},
-			"dependsOn": []
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/LSAzureBlobStorageConnection')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -149,6 +102,53 @@
 				"typeProperties": {
 					"connectionString": "[parameters('LS_BlobStorage_PJA_connectionString')]"
 				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/wait')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Wait Demo",
+						"type": "Wait",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"waitTimeInSeconds": 5
+						}
+					}
+				],
+				"folder": {
+					"name": "Section 5"
+				},
+				"annotations": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Demo Pipeline')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "es el tutorial",
+				"activities": [
+					{
+						"name": "Wait",
+						"type": "Wait",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"waitTimeInSeconds": 1
+						}
+					}
+				],
+				"folder": {
+					"name": "Section 5"
+				},
+				"annotations": []
 			},
 			"dependsOn": []
 		},
@@ -238,6 +238,34 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/DS_DelimitedText_Blob_Custemer')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LSAzureBlobStorageConnection",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "SalesLT.Customer.txt",
+						"container": "input"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LSAzureBlobStorageConnection')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/DSDelimitedTextDL_Customer')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -302,12 +330,12 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/DS_DelimitedText_Blob_Custemer')]",
+			"name": "[concat(parameters('factoryName'), '/DS_inputAzureDelimitedText')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"linkedServiceName": {
-					"referenceName": "LSAzureBlobStorageConnection",
+					"referenceName": "LS_AzureBlobStorageDemo",
 					"type": "LinkedServiceReference"
 				},
 				"annotations": [],
@@ -315,7 +343,7 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"fileName": "SalesLT.Customer.txt",
+						"fileName": "Country.csv",
 						"container": "input"
 					},
 					"columnDelimiter": ",",
@@ -323,10 +351,19 @@
 					"firstRowAsHeader": true,
 					"quoteChar": "\""
 				},
-				"schema": []
+				"schema": [
+					{
+						"name": "Rank",
+						"type": "String"
+					},
+					{
+						"name": "Country",
+						"type": "String"
+					}
+				]
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/LSAzureBlobStorageConnection')]"
+				"[concat(variables('factoryId'), '/linkedServices/LS_AzureBlobStorageDemo')]"
 			]
 		},
 		{
@@ -363,43 +400,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/LS_BlobStorage_PJA')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DS_inputAzureDelimitedText')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "LS_AzureBlobStorageDemo",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": "Country.csv",
-						"container": "input"
-					},
-					"columnDelimiter": ",",
-					"escapeChar": "\\",
-					"firstRowAsHeader": true,
-					"quoteChar": "\""
-				},
-				"schema": [
-					{
-						"name": "Rank",
-						"type": "String"
-					},
-					{
-						"name": "Country",
-						"type": "String"
-					}
-				]
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/LS_AzureBlobStorageDemo')]"
 			]
 		},
 		{
@@ -1675,14 +1675,14 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/ForEach Demo')]",
+			"name": "[concat(parameters('factoryName'), '/Pline_Delete_Demo')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"activities": [
 					{
-						"name": "Lookup Customer Data",
-						"type": "Lookup",
+						"name": "Delete Country csv",
+						"type": "Delete",
 						"dependsOn": [],
 						"policy": {
 							"timeout": "7.00:00:00",
@@ -1693,27 +1693,26 @@
 						},
 						"userProperties": [],
 						"typeProperties": {
-							"source": {
-								"type": "AzureSqlSource",
-								"sqlReaderStoredProcedureName": "[[dbo].[salesYear]",
-								"queryTimeout": "02:00:00"
-							},
 							"dataset": {
-								"referenceName": "DSAzureSqlTableCustomer",
+								"referenceName": "DS_DelimitedText_Blob_Country",
 								"type": "DatasetReference",
 								"parameters": {}
 							},
-							"firstRowOnly": false
+							"enableLogging": false,
+							"storeSettings": {
+								"type": "AzureBlobStorageReadSettings",
+								"recursive": true
+							}
 						}
 					}
 				],
 				"folder": {
-					"name": "Section 5"
+					"name": "Section 10"
 				},
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/DSAzureSqlTableCustomer')]"
+				"[concat(variables('factoryId'), '/datasets/DS_DelimitedText_Blob_Country')]"
 			]
 		},
 		{
@@ -1807,14 +1806,14 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/Pline_Delete_Demo')]",
+			"name": "[concat(parameters('factoryName'), '/ForEach Demo')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"activities": [
 					{
-						"name": "Delete Country csv",
-						"type": "Delete",
+						"name": "Lookup Customer Data",
+						"type": "Lookup",
 						"dependsOn": [],
 						"policy": {
 							"timeout": "7.00:00:00",
@@ -1825,26 +1824,27 @@
 						},
 						"userProperties": [],
 						"typeProperties": {
+							"source": {
+								"type": "AzureSqlSource",
+								"sqlReaderStoredProcedureName": "[[dbo].[salesYear]",
+								"queryTimeout": "02:00:00"
+							},
 							"dataset": {
-								"referenceName": "DS_DelimitedText_Blob_Country",
+								"referenceName": "DSAzureSqlTableCustomer",
 								"type": "DatasetReference",
 								"parameters": {}
 							},
-							"enableLogging": false,
-							"storeSettings": {
-								"type": "AzureBlobStorageReadSettings",
-								"recursive": true
-							}
+							"firstRowOnly": false
 						}
 					}
 				],
 				"folder": {
-					"name": "Section 10"
+					"name": "Section 5"
 				},
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/DS_DelimitedText_Blob_Country')]"
+				"[concat(variables('factoryId'), '/datasets/DSAzureSqlTableCustomer')]"
 			]
 		}
 	]
