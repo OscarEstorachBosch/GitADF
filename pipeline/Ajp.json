@@ -27,7 +27,6 @@
 					},
 					"sink": {
 						"type": "AzureSqlSink",
-						"preCopyScript": "delete * from tm_ots",
 						"disableMetricsCollection": false
 					},
 					"enableStaging": false,
@@ -164,18 +163,6 @@
 									"name": "dta_ult_op",
 									"type": "DateTime",
 									"physicalType": "datetime"
-								}
-							},
-							{
-								"source": {
-									"name": "duracion",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "duracion",
-									"type": "String",
-									"physicalType": "varchar"
 								}
 							},
 							{
