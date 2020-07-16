@@ -1,0 +1,31 @@
+{
+	"name": "DS_DelimitedText_Empresas",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_BlobStorage_PJA",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS_PJA/Imput"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "tm_empresas.csv",
+				"container": "pja"
+			},
+			"columnDelimiter": ";",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "tm_empresas_id;id_emp;mand;c_pos;desc_corta;descripcion;dia_calc_rend;direccion;email;fax;generar_lotes;idioma;modo_saldo;nif;ofs_mixtas;paso;paso_minimo;poblacion;provincia;sid;tel;tipo_intervalo;www",
+				"type": "String"
+			}
+		]
+	}
+}
