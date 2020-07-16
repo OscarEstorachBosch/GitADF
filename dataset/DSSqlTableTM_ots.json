@@ -6,7 +6,7 @@
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
-			"name": "DS_PJA"
+			"name": "DS_PJA/output"
 		},
 		"annotations": [],
 		"type": "AzureSqlTable",
