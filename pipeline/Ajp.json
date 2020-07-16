@@ -42,8 +42,8 @@
 								},
 								"sink": {
 									"name": "tm_empresas_id",
-									"type": "String",
-									"physicalType": "String"
+									"type": "Decimal",
+									"physicalType": "decimal"
 								}
 							},
 							{
@@ -55,7 +55,7 @@
 								"sink": {
 									"name": "id_emp",
 									"type": "String",
-									"physicalType": "String"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -67,7 +67,7 @@
 								"sink": {
 									"name": "mand",
 									"type": "String",
-									"physicalType": "String"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -79,7 +79,7 @@
 								"sink": {
 									"name": "c_pos",
 									"type": "String",
-									"physicalType": "String"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -91,7 +91,7 @@
 								"sink": {
 									"name": "desc_corta",
 									"type": "String",
-									"physicalType": "String"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -103,7 +103,7 @@
 								"sink": {
 									"name": "descripcion",
 									"type": "String",
-									"physicalType": "String"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -114,8 +114,8 @@
 								},
 								"sink": {
 									"name": "dia_calc_rend",
-									"type": "String",
-									"physicalType": "String"
+									"type": "Decimal",
+									"physicalType": "decimal"
 								}
 							},
 							{
@@ -127,7 +127,7 @@
 								"sink": {
 									"name": "direccion",
 									"type": "String",
-									"physicalType": "String"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -139,7 +139,7 @@
 								"sink": {
 									"name": "email",
 									"type": "String",
-									"physicalType": "String"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -151,7 +151,7 @@
 								"sink": {
 									"name": "fax",
 									"type": "String",
-									"physicalType": "String"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -162,8 +162,8 @@
 								},
 								"sink": {
 									"name": "generar_lotes",
-									"type": "String",
-									"physicalType": "String"
+									"type": "Decimal",
+									"physicalType": "decimal"
 								}
 							},
 							{
@@ -175,7 +175,7 @@
 								"sink": {
 									"name": "idioma",
 									"type": "String",
-									"physicalType": "String"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -186,8 +186,8 @@
 								},
 								"sink": {
 									"name": "modo_saldo",
-									"type": "String",
-									"physicalType": "String"
+									"type": "Decimal",
+									"physicalType": "decimal"
 								}
 							},
 							{
@@ -199,7 +199,7 @@
 								"sink": {
 									"name": "nif",
 									"type": "String",
-									"physicalType": "String"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -210,8 +210,8 @@
 								},
 								"sink": {
 									"name": "ofs_mixtas",
-									"type": "String",
-									"physicalType": "String"
+									"type": "Decimal",
+									"physicalType": "decimal"
 								}
 							},
 							{
@@ -222,8 +222,8 @@
 								},
 								"sink": {
 									"name": "paso",
-									"type": "String",
-									"physicalType": "String"
+									"type": "Double",
+									"physicalType": "float"
 								}
 							},
 							{
@@ -234,8 +234,8 @@
 								},
 								"sink": {
 									"name": "paso_minimo",
-									"type": "String",
-									"physicalType": "String"
+									"type": "Double",
+									"physicalType": "float"
 								}
 							},
 							{
@@ -247,7 +247,7 @@
 								"sink": {
 									"name": "poblacion",
 									"type": "String",
-									"physicalType": "String"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -259,7 +259,7 @@
 								"sink": {
 									"name": "provincia",
 									"type": "String",
-									"physicalType": "String"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -270,8 +270,8 @@
 								},
 								"sink": {
 									"name": "sid",
-									"type": "String",
-									"physicalType": "String"
+									"type": "Decimal",
+									"physicalType": "decimal"
 								}
 							},
 							{
@@ -283,7 +283,7 @@
 								"sink": {
 									"name": "tel",
 									"type": "String",
-									"physicalType": "String"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -294,8 +294,8 @@
 								},
 								"sink": {
 									"name": "tipo_intervalo",
-									"type": "String",
-									"physicalType": "String"
+									"type": "Decimal",
+									"physicalType": "decimal"
 								}
 							},
 							{
@@ -307,7 +307,7 @@
 								"sink": {
 									"name": "www",
 									"type": "String",
-									"physicalType": "String"
+									"physicalType": "varchar"
 								}
 							}
 						],
