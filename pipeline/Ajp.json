@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "ACT_Copy_Ots",
+				"name": "Act_Copydata_Empresas",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -26,8 +26,15 @@
 						}
 					},
 					"sink": {
-						"type": "AzureSqlSink",
-						"disableMetricsCollection": false
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
 					},
 					"enableStaging": false,
 					"translator": {
@@ -35,14 +42,14 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "tm_ots_id",
+									"name": "tm_empresas_id",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "tm_ots_id",
-									"type": "Int64",
-									"physicalType": "bigint"
+									"name": "tm_empresas_id",
+									"type": "String",
+									"physicalType": "String"
 								}
 							},
 							{
@@ -54,7 +61,7 @@
 								"sink": {
 									"name": "id_emp",
 									"type": "String",
-									"physicalType": "varchar"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -66,463 +73,199 @@
 								"sink": {
 									"name": "mand",
 									"type": "String",
-									"physicalType": "varchar"
+									"physicalType": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "id_ot",
+									"name": "c_pos",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "id_ot",
-									"type": "Int64",
-									"physicalType": "bigint"
+									"name": "c_pos",
+									"type": "String",
+									"physicalType": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "ancho",
+									"name": "desc_corta",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "ancho",
+									"name": "desc_corta",
 									"type": "String",
-									"physicalType": "varchar"
+									"physicalType": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "cantidad",
+									"name": "descripcion",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "cantidad",
-									"type": "Double",
-									"physicalType": "float"
+									"name": "descripcion",
+									"type": "String",
+									"physicalType": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "cantidad_prevista",
+									"name": "dia_calc_rend",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "cantidad_prevista",
-									"type": "Double",
-									"physicalType": "float"
+									"name": "dia_calc_rend",
+									"type": "String",
+									"physicalType": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "cantidad_real",
+									"name": "direccion",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "cantidad_real",
-									"type": "Double",
-									"physicalType": "float"
+									"name": "direccion",
+									"type": "String",
+									"physicalType": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "cantidad_rprev",
+									"name": "email",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "cantidad_rprev",
-									"type": "Double",
-									"physicalType": "float"
+									"name": "email",
+									"type": "String",
+									"physicalType": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "consum_stk",
+									"name": "fax",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "consum_stk",
-									"type": "Int64",
-									"physicalType": "bigint"
+									"name": "fax",
+									"type": "String",
+									"physicalType": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "dta_ult_op",
-									"type": "DateTime",
+									"name": "generar_lotes",
+									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "dta_ult_op",
-									"type": "DateTime",
-									"physicalType": "datetime"
+									"name": "generar_lotes",
+									"type": "String",
+									"physicalType": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "estado",
+									"name": "idioma",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "estado",
+									"name": "idioma",
 									"type": "String",
-									"physicalType": "varchar"
+									"physicalType": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "factor_impl",
+									"name": "modo_saldo",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "factor_impl",
-									"type": "Double",
-									"physicalType": "float"
+									"name": "modo_saldo",
+									"type": "String",
+									"physicalType": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "fase",
+									"name": "nif",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "fase",
-									"type": "Int64",
-									"physicalType": "bigint"
+									"name": "nif",
+									"type": "String",
+									"physicalType": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "fcic",
+									"name": "ofs_mixtas",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "fcic",
-									"type": "Double",
-									"physicalType": "float"
+									"name": "ofs_mixtas",
+									"type": "String",
+									"physicalType": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "fecha_entrega",
-									"type": "DateTime",
+									"name": "paso",
+									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "fecha_entrega",
-									"type": "DateTime",
-									"physicalType": "datetime"
+									"name": "paso",
+									"type": "String",
+									"physicalType": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "finished_at",
-									"type": "DateTime",
+									"name": "paso_minimo",
+									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "finished_at",
-									"type": "DateTime",
-									"physicalType": "datetime"
+									"name": "paso_minimo",
+									"type": "String",
+									"physicalType": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "started_at",
-									"type": "DateTime",
+									"name": "poblacion",
+									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "started_at",
-									"type": "DateTime",
-									"physicalType": "datetime"
+									"name": "poblacion",
+									"type": "String",
+									"physicalType": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "genera_stk",
+									"name": "provincia",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "genera_stk",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "grup_impl",
+									"name": "provincia",
 									"type": "String",
 									"physicalType": "String"
-								},
-								"sink": {
-									"name": "grup_impl",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "id_almacen",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "id_almacen",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "id_art",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "id_art",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "id_incid",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "id_incid",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "id_lote",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "id_lote",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "id_of",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "id_of",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "maq_prevista",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "maq_prevista",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "medidas",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "medidas",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "metros",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "metros",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "modo_impl",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "modo_impl",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "no_expor",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "no_expor",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "num_ops",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "num_ops",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "ops_previsto",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "ops_previsto",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "opsp_previsto",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "opsp_previsto",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "ord",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "ord",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "rend_empl",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "rend_empl",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "rend_maq",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "rend_maq",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "rend_oper",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "rend_oper",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "rend_ot",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "rend_ot",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "rend_prep",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "rend_prep",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "ritmo",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "ritmo",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "ritmo_real",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "ritmo_real",
-									"type": "Double",
-									"physicalType": "float"
 								}
 							},
 							{
@@ -533,1940 +276,44 @@
 								},
 								"sink": {
 									"name": "sid",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "tarjeta",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "tarjeta",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "tiempo",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "tiempo",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "tiempo_previsto",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "tiempo_previsto",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "tiempo_real",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "tiempo_real",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "tintas",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "tintas",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "type",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "type",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "tprep",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "tprep",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "tprep_previsto",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "tprep_previsto",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "txst",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "txst",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "empl_previsto",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "empl_previsto",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "id_emple",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "id_emple",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "initial_latitude",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "initial_latitude",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "initial_longitude",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "initial_longitude",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "final_longitude",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "final_longitude",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "final_latitude",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "final_latitude",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "id_puesto",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "id_puesto",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "id_cat",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "id_cat",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "id_sec",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "id_sec",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "duracion_sec",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "duracion_sec",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "segundos",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "segundos",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "minutos",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "minutos",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "horas",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "horas",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "dias",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "dias",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "id_tipo_material",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "id_tipo_material",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "tipo_material",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "tipo_material",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "initial_keydata",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "initial_keydata",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "keyidart",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "keyidart",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo1",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo1",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo2",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo2",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo3",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo3",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo4",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo4",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo5",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo5",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo6",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo6",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "zva0_10",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "zva0_10",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "zva1_10",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "zva1_10",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "zva2_10",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "zva2_10",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "zvc0_10",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "zvc0_10",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "zvc1_10",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "zvc1_10",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "zvc2_10",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "zvc2_10",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "zvc3_10",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "zvc3_10",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "zvc4_10",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "zvc4_10",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "zvd0_10",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "zvd0_10",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "zvd1_10",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "zvd1_10",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "zvd2_10",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "zvd2_10",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "zvd3_10",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "zvd3_10",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "zvd4_10",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "zvd4_10",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "zvd5_10",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "zvd5_10",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "zvd6_10",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "zvd6_10",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo19",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo19",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo20",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo20",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo21",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo21",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo22",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo22",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo23",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo23",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo24",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo24",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo25",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo25",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo26",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo26",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo27",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo27",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo28",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo28",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo29",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo29",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo34",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo34",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo35",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo35",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo36",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo36",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo37",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo37",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo38",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo38",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo39",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo39",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo40",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo40",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo41",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo41",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo42",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo42",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo43",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo43",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo44",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo44",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo45",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo45",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo46",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo46",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo47",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo47",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo48",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo48",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo49",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo49",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo50",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo50",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo51",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo51",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo52",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo52",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo53",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo53",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo54",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo54",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo55",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo55",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo56",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo56",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo57",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo57",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo58",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo58",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo59",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo59",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo60",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo60",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo61",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo61",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo64",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo64",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo67",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo67",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo68",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo68",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "usuario",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "usuario",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "crtim",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "crtim",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "ultimo_mov",
-									"type": "DateTime",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "ultimo_mov",
-									"type": "DateTime",
-									"physicalType": "datetime"
-								}
-							},
-							{
-								"source": {
-									"name": "fecha",
-									"type": "DateTime",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "fecha",
-									"type": "DateTime",
-									"physicalType": "datetime"
-								}
-							},
-							{
-								"source": {
-									"name": "id_motivo_desprog",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "id_motivo_desprog",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "nextout",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nextout",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "nextoutinicio",
-									"type": "DateTime",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nextoutinicio",
-									"type": "DateTime",
-									"physicalType": "datetime"
-								}
-							},
-							{
-								"source": {
-									"name": "dta_upd_est",
-									"type": "DateTime",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "dta_upd_est",
-									"type": "DateTime",
-									"physicalType": "datetime"
-								}
-							},
-							{
-								"source": {
-									"name": "nextoutkm",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nextoutkm",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "id_sec_of",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "id_sec_of",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "anulada",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "anulada",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "description",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "description",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "belt",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "belt",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "var1",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "var1",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "var2",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "var2",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "final_keydata",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "final_keydata",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "id_ot_internal",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "id_ot_internal",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "tm_incid_maquina_id",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "tm_incid_maquina_id",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "mant_type_planned",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "mant_type_planned",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "mant_type",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "mant_type",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "tasks",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "tasks",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "id_cliente",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "id_cliente",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "priority",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "priority",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "tm_empleados_id",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "tm_empleados_id",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "read",
-									"type": "Boolean",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "read1",
-									"type": "Boolean",
-									"physicalType": "bit"
-								}
-							},
-							{
-								"source": {
-									"name": "id_cent_ot",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "id_cent_ot",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "id_cliente_var",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "id_cliente_var",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "ot_erp",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "ot_erp",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "punctuality",
-									"type": "Boolean",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "punctuality",
-									"type": "Boolean",
-									"physicalType": "bit"
-								}
-							},
-							{
-								"source": {
-									"name": "punctuality_margin",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "punctuality_margin",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "punctuality_margin_sec",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "punctuality_margin_sec",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "empty_km",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "empty_km",
-									"type": "Decimal",
-									"physicalType": "decimal"
-								}
-							},
-							{
-								"source": {
-									"name": "load_quantity",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "load_quantity",
-									"type": "Decimal",
-									"physicalType": "decimal"
-								}
-							},
-							{
-								"source": {
-									"name": "net_duration_sec",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "net_duration_sec",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo30",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo30",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo31",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo31",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo32",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo32",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo33",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo33",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo69",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo69",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo7",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo7",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo71",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo71",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo75",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo75",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo76",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo76",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo8",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo8",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo80",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo80",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo82",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo82",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo84",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo84",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "nnoo9",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "nnoo9",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "updatable",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "updatable",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "zva3_10",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "zva3_10",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "zva4_10",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "zva4_10",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "zva5_10",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "zva5_10",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "created_at",
-									"type": "DateTime",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "created_at",
-									"type": "DateTime",
-									"physicalType": "datetime"
-								}
-							},
-							{
-								"source": {
-									"name": "updated_at",
-									"type": "DateTime",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "updated_at",
-									"type": "DateTime",
-									"physicalType": "datetime"
-								}
-							},
-							{
-								"source": {
-									"name": "created_by",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "created_by",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "id_cliente_bien",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "id_cliente_bien",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "tm_clientes_id",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "tm_clientes_id",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "distance",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "distance",
-									"type": "Double",
-									"physicalType": "float"
-								}
-							},
-							{
-								"source": {
-									"name": "calc_mode",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "calc_mode",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "tm_materiales_id",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "tm_materiales_id",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "simulation",
-									"type": "Boolean",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "simulation",
-									"type": "Boolean",
-									"physicalType": "bit"
-								}
-							},
-							{
-								"source": {
-									"name": "related_tm_ots_id",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "related_tm_ots_id",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "confirmed_at",
-									"type": "DateTime",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "confirmed_at",
-									"type": "DateTime",
-									"physicalType": "datetime"
-								}
-							},
-							{
-								"source": {
-									"name": "confirmed_by",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "confirmed_by",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "tm_maquinas_id",
 									"type": "String",
 									"physicalType": "String"
-								},
-								"sink": {
-									"name": "tm_maquinas_id",
-									"type": "Int64",
-									"physicalType": "bigint"
 								}
 							},
 							{
 								"source": {
-									"name": "keycliente",
+									"name": "tel",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "keycliente",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "tm_empresas_id",
+									"name": "tel",
 									"type": "String",
 									"physicalType": "String"
-								},
-								"sink": {
-									"name": "tm_empresas_id",
-									"type": "Int64",
-									"physicalType": "bigint"
 								}
 							},
 							{
 								"source": {
-									"name": "tm_categoria_id",
+									"name": "tipo_intervalo",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "tm_categoria_id",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
-							},
-							{
-								"source": {
-									"name": "tm_secciones_id",
+									"name": "tipo_intervalo",
 									"type": "String",
 									"physicalType": "String"
-								},
-								"sink": {
-									"name": "tm_secciones_id",
-									"type": "Int64",
-									"physicalType": "bigint"
 								}
 							},
 							{
 								"source": {
-									"name": "motivos_desprog",
+									"name": "www",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "motivos_desprog",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "id_anulacio",
+									"name": "www",
 									"type": "String",
 									"physicalType": "String"
-								},
-								"sink": {
-									"name": "id_anulacio",
-									"type": "String",
-									"physicalType": "varchar"
 								}
 							}
 						],
@@ -2479,32 +326,16 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "DS_DelimitedText_TM_OTS",
+						"referenceName": "DS_DelimitedText_Empresas",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "DSSqlTableTM_ots",
+						"referenceName": "DS_DelimitedText_Empresas",
 						"type": "DatasetReference"
 					}
 				]
-			},
-			{
-				"name": "Act_Copydata_Empresas",
-				"type": "Copy",
-				"dependsOn": [],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"enableStaging": false
-				}
 			}
 		],
 		"folder": {
