@@ -1,0 +1,56 @@
+{
+	"name": "DS_AzureSqlTable_Centros",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LSAzureSqlDatabase_connection",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS_PJA/output"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "tm_centros_id",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "mand",
+				"type": "varchar"
+			},
+			{
+				"name": "id_emp",
+				"type": "varchar"
+			},
+			{
+				"name": "id_cent",
+				"type": "varchar"
+			},
+			{
+				"name": "descripcion",
+				"type": "varchar"
+			},
+			{
+				"name": "ch_maquina",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "ch_empleado",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "sid",
+				"type": "bigint",
+				"precision": 19
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "tm_centros"
+		}
+	}
+}
