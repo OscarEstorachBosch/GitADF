@@ -1,0 +1,128 @@
+{
+	"name": "DS_AzureSqlTable_Empresas",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LSAzureSqlDatabase_connection",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS_PJA/output"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "tm_empresas_id",
+				"type": "decimal",
+				"precision": 32,
+				"scale": 0
+			},
+			{
+				"name": "id_emp",
+				"type": "varchar"
+			},
+			{
+				"name": "mand",
+				"type": "varchar"
+			},
+			{
+				"name": "c_pos",
+				"type": "varchar"
+			},
+			{
+				"name": "desc_corta",
+				"type": "varchar"
+			},
+			{
+				"name": "descripcion",
+				"type": "varchar"
+			},
+			{
+				"name": "dia_calc_rend",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 0
+			},
+			{
+				"name": "direccion",
+				"type": "varchar"
+			},
+			{
+				"name": "email",
+				"type": "varchar"
+			},
+			{
+				"name": "fax",
+				"type": "varchar"
+			},
+			{
+				"name": "generar_lotes",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 0
+			},
+			{
+				"name": "idioma",
+				"type": "varchar"
+			},
+			{
+				"name": "modo_saldo",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 0
+			},
+			{
+				"name": "nif",
+				"type": "varchar"
+			},
+			{
+				"name": "ofs_mixtas",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 0
+			},
+			{
+				"name": "paso",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "paso_minimo",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "poblacion",
+				"type": "varchar"
+			},
+			{
+				"name": "provincia",
+				"type": "varchar"
+			},
+			{
+				"name": "sid",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 0
+			},
+			{
+				"name": "tel",
+				"type": "varchar"
+			},
+			{
+				"name": "tipo_intervalo",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 0
+			},
+			{
+				"name": "www",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "tm_empresas"
+		}
+	}
+}
