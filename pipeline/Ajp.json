@@ -330,6 +330,160 @@
 						"type": "DatasetReference"
 					}
 				]
+			},
+			{
+				"name": "Act_Copydata_Centros",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Act_Copydata_Empresas",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "tm_centros_id",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "tm_centros_id",
+									"type": "Int64",
+									"physicalType": "bigint"
+								}
+							},
+							{
+								"source": {
+									"name": "mand",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "mand",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "id_emp",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "id_emp",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "id_cent",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "id_cent",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "descripcion",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "descripcion",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "ch_maquina",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ch_maquina",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "ch_empleado",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ch_empleado",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "sid",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "sid",
+									"type": "Int64",
+									"physicalType": "bigint"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Ds_DelimitedText_Centros",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_AzureSqlTable_Centros",
+						"type": "DatasetReference"
+					}
+				]
 			}
 		],
 		"folder": {
