@@ -26,15 +26,7 @@
 						}
 					},
 					"sink": {
-						"type": "DelimitedTextSink",
-						"storeSettings": {
-							"type": "AzureBlobStorageWriteSettings"
-						},
-						"formatSettings": {
-							"type": "DelimitedTextWriteSettings",
-							"quoteAllText": true,
-							"fileExtension": ".txt"
-						}
+						"type": "AzureSqlSink"
 					},
 					"enableStaging": false,
 					"translator": {
@@ -332,7 +324,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "DS_DelimitedText_Empresas",
+						"referenceName": "DS_AzureSqlTable_Empresas",
 						"type": "DatasetReference"
 					}
 				]
