@@ -1,0 +1,31 @@
+{
+	"name": "Ds_DelimitedText_Centros",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_BlobStorage_PJA",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS_PJA/Imput"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "tm_centros.csv",
+				"container": "pja"
+			},
+			"columnDelimiter": ";",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "tm_centros_id;mand;id_emp;id_cent;descripcion;ch_maquina;ch_empleado;sid",
+				"type": "String"
+			}
+		]
+	}
+}
