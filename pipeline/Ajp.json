@@ -1321,7 +1321,7 @@
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "password1",
+									"name": "password",
 									"type": "String",
 									"physicalType": "varchar"
 								}
@@ -1389,7 +1389,7 @@
 							{
 								"source": {
 									"name": "created_by",
-									"type": "DateTime",
+									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
