@@ -1,0 +1,363 @@
+{
+	"name": "DS_SqlTableEmpleados",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LSAzureSqlDatabase_connection",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS_PJA/output"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "tm_empleados_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "id_emple",
+				"type": "varchar"
+			},
+			{
+				"name": "c_pos",
+				"type": "varchar"
+			},
+			{
+				"name": "n_ss",
+				"type": "varchar"
+			},
+			{
+				"name": "activo",
+				"type": "char"
+			},
+			{
+				"name": "banco",
+				"type": "varchar"
+			},
+			{
+				"name": "cc",
+				"type": "varchar"
+			},
+			{
+				"name": "derechos",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 0
+			},
+			{
+				"name": "direccion",
+				"type": "varchar"
+			},
+			{
+				"name": "dni",
+				"type": "varchar"
+			},
+			{
+				"name": "dta_ult_upd",
+				"type": "datetime2",
+				"scale": 7
+			},
+			{
+				"name": "email",
+				"type": "varchar"
+			},
+			{
+				"name": "estado",
+				"type": "varchar"
+			},
+			{
+				"name": "estado_civil",
+				"type": "varchar"
+			},
+			{
+				"name": "experiencia",
+				"type": "varchar"
+			},
+			{
+				"name": "fecha_alta",
+				"type": "datetime2",
+				"scale": 7
+			},
+			{
+				"name": "fecha_baja",
+				"type": "datetime2",
+				"scale": 7
+			},
+			{
+				"name": "fecha_nac",
+				"type": "datetime2",
+				"scale": 7
+			},
+			{
+				"name": "foto",
+				"type": "varchar"
+			},
+			{
+				"name": "grupo_trabajo",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 0
+			},
+			{
+				"name": "hora_extra",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "hora_nocturna",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "hora_normal",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "id_calc_prima",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 0
+			},
+			{
+				"name": "id_calendar",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 0
+			},
+			{
+				"name": "id_clhor",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 0
+			},
+			{
+				"name": "id_emp",
+				"type": "varchar"
+			},
+			{
+				"name": "huella",
+				"type": "varchar"
+			},
+			{
+				"name": "id_tarifa",
+				"type": "varchar"
+			},
+			{
+				"name": "idioma",
+				"type": "varchar"
+			},
+			{
+				"name": "interv_mdoble",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "loc_nac",
+				"type": "varchar"
+			},
+			{
+				"name": "modo_saldo",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 0
+			},
+			{
+				"name": "no_presencia",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 0
+			},
+			{
+				"name": "nombre",
+				"type": "varchar"
+			},
+			{
+				"name": "num_matricula",
+				"type": "varchar"
+			},
+			{
+				"name": "observaciones",
+				"type": "varchar"
+			},
+			{
+				"name": "paso",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "paso_minimo",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "pena_mdoble",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "plus_hora",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "poblacion",
+				"type": "varchar"
+			},
+			{
+				"name": "povincia",
+				"type": "varchar"
+			},
+			{
+				"name": "prv_nac",
+				"type": "varchar"
+			},
+			{
+				"name": "sexo",
+				"type": "varchar"
+			},
+			{
+				"name": "sid",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 0
+			},
+			{
+				"name": "taquilla",
+				"type": "varchar"
+			},
+			{
+				"name": "tarjeta",
+				"type": "varchar"
+			},
+			{
+				"name": "tel_movil",
+				"type": "varchar"
+			},
+			{
+				"name": "telefono",
+				"type": "varchar"
+			},
+			{
+				"name": "tip_horario",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 0
+			},
+			{
+				"name": "id_cat",
+				"type": "varchar"
+			},
+			{
+				"name": "id_puesto",
+				"type": "varchar"
+			},
+			{
+				"name": "id_sec",
+				"type": "varchar"
+			},
+			{
+				"name": "latitude",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "longitude",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "ult_tip_serv",
+				"type": "varchar"
+			},
+			{
+				"name": "ult_tip_desc",
+				"type": "varchar"
+			},
+			{
+				"name": "dta_ult_upp",
+				"type": "datetime2",
+				"scale": 7
+			},
+			{
+				"name": "prog_ult_tip_serv",
+				"type": "varchar"
+			},
+			{
+				"name": "prev_ult_tip_serv",
+				"type": "varchar"
+			},
+			{
+				"name": "prog_dta_ult_upd",
+				"type": "datetime2",
+				"scale": 7
+			},
+			{
+				"name": "prev_dta_ult_upd",
+				"type": "datetime2",
+				"scale": 7
+			},
+			{
+				"name": "prev_ult_tip_desc",
+				"type": "varchar"
+			},
+			{
+				"name": "prog_ult_tip_desc",
+				"type": "varchar"
+			},
+			{
+				"name": "clase",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "password1",
+				"type": "varchar"
+			},
+			{
+				"name": "tm_pres_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "app_version",
+				"type": "varchar"
+			},
+			{
+				"name": "indefinite_contract",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "created_at",
+				"type": "datetime2",
+				"scale": 7
+			},
+			{
+				"name": "updated_at",
+				"type": "datetime2",
+				"scale": 7
+			},
+			{
+				"name": "created_by",
+				"type": "varchar"
+			},
+			{
+				"name": "tm_categoria_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "tm_puestos_trabajo_id",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "tm_empleados"
+		}
+	}
+}
