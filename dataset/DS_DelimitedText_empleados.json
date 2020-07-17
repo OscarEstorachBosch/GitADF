@@ -1,0 +1,31 @@
+{
+	"name": "DS_DelimitedText_empleados",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_BlobStorage_PJA",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS_PJA/Imput"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "tm_empleados.csv",
+				"container": "pja"
+			},
+			"columnDelimiter": ";",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "tm_empleados_id;id_emple;c_pos;n_ss;activo;banco;cc;derechos;direccion;dni;dta_ult_upd;email;estado;estado_civil;experiencia;fecha_alta;fecha_baja;fecha_nac;foto;grupo_trabajo;hora_extra;hora_nocturna;hora_normal;id_calc_prima;id_calendar;id_clhor;id_emp;huella;id_tarifa;idioma;interv_mdoble;loc_nac;modo_saldo;no_presencia;nombre;num_matricula;observaciones;paso;paso_minimo;pena_mdoble;plus_hora;poblacion;povincia;prv_nac;sexo;sid;taquilla;tarjeta;tel_movil;telefono;tip_horario;id_cat;id_puesto;id_sec;latitude;longitude;ult_tip_serv;ult_tip_desc;dta_ult_upp;prog_ult_tip_serv;prev_ult_tip_serv;prog_dta_ult_upd;prev_dta_ult_upd;prev_ult_tip_desc;prog_ult_tip_desc;clase;password;tm_pres_id;app_version;indefinite_contract;created_at;updated_at;created_by;tm_categoria_id;tm_puestos_trabajo_id",
+				"type": "String"
+			}
+		]
+	}
+}
