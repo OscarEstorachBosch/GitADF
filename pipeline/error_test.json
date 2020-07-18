@@ -1642,6 +1642,18 @@
 							},
 							{
 								"source": {
+									"name": "crtim",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "crtim",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
 									"name": "ultimo_mov",
 									"type": "DateTime",
 									"physicalType": "String"
@@ -1815,7 +1827,7 @@
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "id_ot_internal",
+									"name": "id_ot_integerernal",
 									"type": "String",
 									"physicalType": "varchar"
 								}
@@ -1906,14 +1918,14 @@
 							},
 							{
 								"source": {
-									"name": "read",
-									"type": "Boolean",
+									"name": "type",
+									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
 									"name": "read1",
-									"type": "Boolean",
-									"physicalType": "bit"
+									"type": "String",
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -1955,13 +1967,13 @@
 							{
 								"source": {
 									"name": "punctuality",
-									"type": "Boolean",
+									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
 									"name": "punctuality",
-									"type": "Boolean",
-									"physicalType": "bit"
+									"type": "String",
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -2339,13 +2351,13 @@
 							{
 								"source": {
 									"name": "simulation",
-									"type": "Boolean",
+									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
 									"name": "simulation",
-									"type": "Boolean",
-									"physicalType": "bit"
+									"type": "String",
+									"physicalType": "varchar"
 								}
 							},
 							{
