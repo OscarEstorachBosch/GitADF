@@ -1,0 +1,31 @@
+{
+	"name": "DS_DelimitedText_Calendario",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_BlobStorage_PJA",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS_PJA/Imput"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "tm_calendario.csv",
+				"container": "pja"
+			},
+			"columnDelimiter": ";",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "fecha;mes;dia;anno_eco;keydata;diaanno;firstdaymonth;lastdaymonth;año;mestemporada;semana;diasemana;idtemporada;periodo;keyyearmonth;keyyearweek;rank_mestemporada;rank_anno_eco;daysofmonth;fechainiciotemp;fechafintemp;keyidtemporada;keyday;rank_idtemporada;fecha_hora",
+				"type": "String"
+			}
+		]
+	}
+}
