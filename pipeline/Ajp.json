@@ -362,7 +362,9 @@
 						}
 					},
 					"sink": {
-						"type": "AzureSqlSink"
+						"type": "AzureSqlSink",
+						"preCopyScript": "delete from tm_centros",
+						"disableMetricsCollection": false
 					},
 					"enableStaging": false,
 					"translator": {
