@@ -1,0 +1,138 @@
+{
+	"name": "DS_SqlTable_Calendario",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LSAzureSqlDatabase_connection",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS_PJA/output"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "fecha",
+				"type": "date"
+			},
+			{
+				"name": "mes",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "dia",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "anno_eco",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "keydata",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "diaanno",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "firstdaymonth",
+				"type": "datetime2",
+				"scale": 3
+			},
+			{
+				"name": "lastdaymonth",
+				"type": "datetime2",
+				"scale": 3
+			},
+			{
+				"name": "year",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "mestemporada",
+				"type": "varchar"
+			},
+			{
+				"name": "semana",
+				"type": "varchar"
+			},
+			{
+				"name": "diasemana",
+				"type": "varchar"
+			},
+			{
+				"name": "idtemporada",
+				"type": "varchar"
+			},
+			{
+				"name": "periodo",
+				"type": "varchar"
+			},
+			{
+				"name": "keyyearmonth",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "keyyearweek",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "rank_mestemporada",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "rank_anno_eco",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "daysofmonth",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "fechainiciotemp",
+				"type": "datetime2",
+				"scale": 3
+			},
+			{
+				"name": "fechafintemp",
+				"type": "datetime2",
+				"scale": 3
+			},
+			{
+				"name": "keyidtemporada",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "keyday",
+				"type": "varchar"
+			},
+			{
+				"name": "rank_idtemporada",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "fecha_hora",
+				"type": "datetime2",
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "tm_calendario"
+		}
+	}
+}
