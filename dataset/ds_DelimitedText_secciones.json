@@ -1,0 +1,31 @@
+{
+	"name": "ds_DelimitedText_secciones",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_BlobStorage_PJA",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS_PJA/Imput"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "tm_secciones.csv",
+				"container": "pja"
+			},
+			"columnDelimiter": ";",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "tm_secciones_id;id_emp;id_sec;descripcion;sid;tm_empresas_id",
+				"type": "String"
+			}
+		]
+	}
+}
