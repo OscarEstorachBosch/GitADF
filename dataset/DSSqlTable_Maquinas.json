@@ -1,0 +1,382 @@
+{
+	"name": "DSSqlTable_Maquinas",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LSAzureSqlDatabase_connection",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS_PJA/output"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "tm_maquinas_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "id_emp",
+				"type": "varchar"
+			},
+			{
+				"name": "mand",
+				"type": "varchar"
+			},
+			{
+				"name": "maquina",
+				"type": "varchar"
+			},
+			{
+				"name": "activa",
+				"type": "varchar"
+			},
+			{
+				"name": "capacidad",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "coste_hora",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "descripcion",
+				"type": "varchar"
+			},
+			{
+				"name": "es_linea",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "id_calendar",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "id_cent",
+				"type": "varchar"
+			},
+			{
+				"name": "id_incid",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "id_linia",
+				"type": "varchar"
+			},
+			{
+				"name": "sid",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "simultanea",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "tarjeta",
+				"type": "varchar"
+			},
+			{
+				"name": "estado",
+				"type": "varchar"
+			},
+			{
+				"name": "clase",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "belt",
+				"type": "varchar"
+			},
+			{
+				"name": "enroll_date",
+				"type": "datetime2",
+				"scale": 3
+			},
+			{
+				"name": "idtomtom",
+				"type": "varchar"
+			},
+			{
+				"name": "objid",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "school",
+				"type": "varchar"
+			},
+			{
+				"name": "var1",
+				"type": "varchar"
+			},
+			{
+				"name": "var2",
+				"type": "varchar"
+			},
+			{
+				"name": "wc",
+				"type": "varchar"
+			},
+			{
+				"name": "machine_group",
+				"type": "varchar"
+			},
+			{
+				"name": "machine_type",
+				"type": "varchar"
+			},
+			{
+				"name": "tm_machine_types_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "tm_machine_groups_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "unavailable",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "qr_code",
+				"type": "varchar"
+			},
+			{
+				"name": "fuel_type",
+				"type": "varchar"
+			},
+			{
+				"name": "id_proveedor",
+				"type": "varchar"
+			},
+			{
+				"name": "machine_hmgn",
+				"type": "varchar"
+			},
+			{
+				"name": "useful_life",
+				"type": "varchar"
+			},
+			{
+				"name": "categoria",
+				"type": "varchar"
+			},
+			{
+				"name": "chassis_num",
+				"type": "varchar"
+			},
+			{
+				"name": "engine_snr",
+				"type": "varchar"
+			},
+			{
+				"name": "engine_type",
+				"type": "varchar"
+			},
+			{
+				"name": "expiry_date",
+				"type": "datetime2",
+				"scale": 3
+			},
+			{
+				"name": "fleet_hgt",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "fleet_len",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "fleet_num",
+				"type": "varchar"
+			},
+			{
+				"name": "fleet_vin",
+				"type": "varchar"
+			},
+			{
+				"name": "fleet_wid",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "fuel_pri",
+				"type": "varchar"
+			},
+			{
+				"name": "litera",
+				"type": "varchar"
+			},
+			{
+				"name": "max_pax",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "rango",
+				"type": "varchar"
+			},
+			{
+				"name": "var10",
+				"type": "varchar"
+			},
+			{
+				"name": "var3",
+				"type": "varchar"
+			},
+			{
+				"name": "var4",
+				"type": "varchar"
+			},
+			{
+				"name": "var5",
+				"type": "varchar"
+			},
+			{
+				"name": "var6",
+				"type": "varchar"
+			},
+			{
+				"name": "var7",
+				"type": "varchar"
+			},
+			{
+				"name": "var8",
+				"type": "varchar"
+			},
+			{
+				"name": "var9",
+				"type": "varchar"
+			},
+			{
+				"name": "created_at",
+				"type": "datetime2",
+				"scale": 3
+			},
+			{
+				"name": "updated_at",
+				"type": "datetime2",
+				"scale": 3
+			},
+			{
+				"name": "created_by",
+				"type": "varchar"
+			},
+			{
+				"name": "tipo_recurso",
+				"type": "varchar"
+			},
+			{
+				"name": "id_maquina_recur",
+				"type": "varchar"
+			},
+			{
+				"name": "id_maquina_fleet",
+				"type": "varchar"
+			},
+			{
+				"name": "problema",
+				"type": "varchar"
+			},
+			{
+				"name": "license_num",
+				"type": "varchar"
+			},
+			{
+				"name": "num_pax",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "zzkondm",
+				"type": "varchar"
+			},
+			{
+				"name": "zzmvgr1",
+				"type": "varchar"
+			},
+			{
+				"name": "escola",
+				"type": "varchar"
+			},
+			{
+				"name": "lavabo",
+				"type": "varchar"
+			},
+			{
+				"name": "cinturon",
+				"type": "varchar"
+			},
+			{
+				"name": "num_videos",
+				"type": "varchar"
+			},
+			{
+				"name": "butaca",
+				"type": "varchar"
+			},
+			{
+				"name": "radio",
+				"type": "varchar"
+			},
+			{
+				"name": "rampa",
+				"type": "varchar"
+			},
+			{
+				"name": "precale",
+				"type": "varchar"
+			},
+			{
+				"name": "viu",
+				"type": "varchar"
+			},
+			{
+				"name": "zzfechzbu",
+				"type": "varchar"
+			},
+			{
+				"name": "zztasiento",
+				"type": "varchar"
+			},
+			{
+				"name": "zzpoliza",
+				"type": "varchar"
+			},
+			{
+				"name": "zzaseguradora",
+				"type": "varchar"
+			},
+			{
+				"name": "is_si_unit",
+				"type": "varchar"
+			},
+			{
+				"name": "idmaquina_prog",
+				"type": "varchar"
+			},
+			{
+				"name": "obu_serialno",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "tm_maquinas"
+		}
+	}
+}
