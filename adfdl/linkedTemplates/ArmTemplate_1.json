@@ -3738,7 +3738,9 @@
 								}
 							},
 							"sink": {
-								"type": "AzureSqlSink"
+								"type": "AzureSqlSink",
+								"preCopyScript": "truncate table tm_ots",
+								"disableMetricsCollection": false
 							},
 							"enableStaging": false,
 							"translator": {
