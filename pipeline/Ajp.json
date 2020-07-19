@@ -3051,7 +3051,7 @@
 					},
 					"sink": {
 						"type": "AzureSqlSink",
-						"preCopyScript": "delete from tm_ots",
+						"preCopyScript": "truncate table tm_ots",
 						"disableMetricsCollection": false
 					},
 					"enableStaging": false,
