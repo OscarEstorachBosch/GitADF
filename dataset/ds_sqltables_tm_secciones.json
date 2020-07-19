@@ -1,0 +1,47 @@
+{
+	"name": "ds_sqltables_tm_secciones",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LSAzureSqlDatabase_connection",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS_PJA/output"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "tm_secciones_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "id_emp",
+				"type": "varchar"
+			},
+			{
+				"name": "id_sec",
+				"type": "varchar"
+			},
+			{
+				"name": "descripcion",
+				"type": "varchar"
+			},
+			{
+				"name": "sid",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "tm_empresas_id",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "tm_secciones"
+		}
+	}
+}
