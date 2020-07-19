@@ -16,7 +16,7 @@
 				"fileName": "tm_maquinas.csv",
 				"container": "pja"
 			},
-			"columnDelimiter": ",",
+			"columnDelimiter": ";",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
