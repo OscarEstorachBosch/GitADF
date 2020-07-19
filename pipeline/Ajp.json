@@ -3050,7 +3050,9 @@
 						}
 					},
 					"sink": {
-						"type": "AzureSqlSink"
+						"type": "AzureSqlSink",
+						"preCopyScript": "delete from tm_ots",
+						"disableMetricsCollection": false
 					},
 					"enableStaging": false,
 					"translator": {
