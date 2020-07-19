@@ -1483,6 +1483,308 @@
 					"enableStaging": false,
 					"translator": {
 						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "fecha",
+									"type": "DateTime",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "fecha",
+									"type": "DateTime",
+									"physicalType": "date"
+								}
+							},
+							{
+								"source": {
+									"name": "mes",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "mes",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "dia",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "dia",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "anno_eco",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "anno_eco",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "keydata",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "keydata",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "diaanno",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "diaanno",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "firstdaymonth",
+									"type": "DateTime",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "firstdaymonth",
+									"type": "DateTime",
+									"physicalType": "datetime2"
+								}
+							},
+							{
+								"source": {
+									"name": "lastdaymonth",
+									"type": "DateTime",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "lastdaymonth",
+									"type": "DateTime",
+									"physicalType": "datetime2"
+								}
+							},
+							{
+								"source": {
+									"name": "año",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "year",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "mestemporada",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "mestemporada",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "semana",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "semana",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "diasemana",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "diasemana",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "idtemporada",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "idtemporada",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "periodo",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "periodo",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "keyyearmonth",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "keyyearmonth",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "keyyearweek",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "keyyearweek",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "rank_mestemporada",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "rank_mestemporada",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "rank_anno_eco",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "rank_anno_eco",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "daysofmonth",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "daysofmonth",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "fechainiciotemp",
+									"type": "DateTime",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "fechainiciotemp",
+									"type": "DateTime",
+									"physicalType": "datetime2"
+								}
+							},
+							{
+								"source": {
+									"name": "fechafintemp",
+									"type": "DateTime",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "fechafintemp",
+									"type": "DateTime",
+									"physicalType": "datetime2"
+								}
+							},
+							{
+								"source": {
+									"name": "keyidtemporada",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "keyidtemporada",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "keyday",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "keyday",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "rank_idtemporada",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "rank_idtemporada",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "fecha_hora",
+									"type": "DateTime",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "fecha_hora",
+									"type": "DateTime",
+									"physicalType": "datetime2"
+								}
+							}
+						],
 						"typeConversion": true,
 						"typeConversionSettings": {
 							"allowDataTruncation": true,
