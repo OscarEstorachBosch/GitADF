@@ -13,6 +13,40 @@
 	},
 	"resources": [
 		{
+			"name": "[concat(parameters('factoryName'), '/DS_DelimitedText_maquinas')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_BlobStorage_PJA",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "DS_PJA/Imput"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "tm_maquinas.csv",
+						"container": "pja"
+					},
+					"columnDelimiter": ";",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "tm_maquinas_id;id_emp;mand;maquina;activa;capacidad;coste_hora;descripcion;es_linea;id_calendar;id_cent;id_incid;id_linia;sid;simultanea;tarjeta;estado;clase;belt;enroll_date;idtomtom;objid;school;var1;var2;wc;machine_group;machine_type;tm_machine_types_id;tm_machine_groups_id;unavailable;qr_code;fuel_type;id_proveedor;machine_hmgn;useful_life;categoria;chassis_num;engine_snr;engine_type;expiry_date;fleet_hgt;fleet_len;fleet_num;fleet_vin;fleet_wid;fuel_pri;litera;max_pax;rango;var10;var3;var4;var5;var6;var7;var8;var9;created_at;updated_at;created_by;tipo_recurso;id_maquina_recur;id_maquina_fleet;problema;license_num;num_pax;zzkondm;zzmvgr1;escola;lavabo;cinturon;num_videos;butaca;radio;rampa;precale;viu;zzfechzbu;zztasiento;zzpoliza;zzaseguradora;is_si_unit;idmaquina_prog;obu_serialno",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/DS_SqlTableEmpleados')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -6215,6 +6249,7 @@
 				"[concat(variables('factoryId'), '/datasets/Ds_DelimitedText_Centros')]",
 				"[concat(variables('factoryId'), '/datasets/DS_SqlTableEmpleados')]",
 				"[concat(variables('factoryId'), '/datasets/DS_SqlTable_Calendario')]",
+				"[concat(variables('factoryId'), '/datasets/DS_DelimitedText_maquinas')]",
 				"[concat(variables('factoryId'), '/datasets/ds_DelimitedText_secciones')]",
 				"[concat(variables('factoryId'), '/datasets/ds_sqltables_tm_secciones')]"
 			]

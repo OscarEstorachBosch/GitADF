@@ -153,6 +153,44 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/Until Demo')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Until True",
+						"type": "Until",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"expression": {
+								"value": "@bool('true')",
+								"type": "Expression"
+							},
+							"activities": [
+								{
+									"name": "Wait1",
+									"type": "Wait",
+									"dependsOn": [],
+									"userProperties": [],
+									"typeProperties": {
+										"waitTimeInSeconds": 5
+									}
+								}
+							],
+							"timeout": "7.00:00:00"
+						}
+					}
+				],
+				"folder": {
+					"name": "Section 5"
+				},
+				"annotations": []
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/DSAzureSqlTableCustomer')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -2014,42 +2052,6 @@
 				"schema": [
 					{
 						"name": "tm_empleados_id;id_emple;c_pos;n_ss;activo;banco;cc;derechos;direccion;dni;dta_ult_upd;email;estado;estado_civil;experiencia;fecha_alta;fecha_baja;fecha_nac;foto;grupo_trabajo;hora_extra;hora_nocturna;hora_normal;id_calc_prima;id_calendar;id_clhor;id_emp;huella;id_tarifa;idioma;interv_mdoble;loc_nac;modo_saldo;no_presencia;nombre;num_matricula;observaciones;paso;paso_minimo;pena_mdoble;plus_hora;poblacion;povincia;prv_nac;sexo;sid;taquilla;tarjeta;tel_movil;telefono;tip_horario;id_cat;id_puesto;id_sec;latitude;longitude;ult_tip_serv;ult_tip_desc;dta_ult_upp;prog_ult_tip_serv;prev_ult_tip_serv;prog_dta_ult_upd;prev_dta_ult_upd;prev_ult_tip_desc;prog_ult_tip_desc;clase;password;tm_pres_id;app_version;indefinite_contract;created_at;updated_at;created_by;tm_categoria_id;tm_puestos_trabajo_id",
-						"type": "String"
-					}
-				]
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/LS_BlobStorage_PJA')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DS_DelimitedText_maquinas')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "LS_BlobStorage_PJA",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "DS_PJA/Imput"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": "tm_maquinas.csv",
-						"container": "pja"
-					},
-					"columnDelimiter": ";",
-					"escapeChar": "\\",
-					"firstRowAsHeader": true,
-					"quoteChar": "\""
-				},
-				"schema": [
-					{
-						"name": "tm_maquinas_id;id_emp;mand;maquina;activa;capacidad;coste_hora;descripcion;es_linea;id_calendar;id_cent;id_incid;id_linia;sid;simultanea;tarjeta;estado;clase;belt;enroll_date;idtomtom;objid;school;var1;var2;wc;machine_group;machine_type;tm_machine_types_id;tm_machine_groups_id;unavailable;qr_code;fuel_type;id_proveedor;machine_hmgn;useful_life;categoria;chassis_num;engine_snr;engine_type;expiry_date;fleet_hgt;fleet_len;fleet_num;fleet_vin;fleet_wid;fuel_pri;litera;max_pax;rango;var10;var3;var4;var5;var6;var7;var8;var9;created_at;updated_at;created_by;tipo_recurso;id_maquina_recur;id_maquina_fleet;problema;license_num;num_pax;zzkondm;zzmvgr1;escola;lavabo;cinturon;num_videos;butaca;radio;rampa;precale;viu;zzfechzbu;zztasiento;zzpoliza;zzaseguradora;is_si_unit;idmaquina_prog;obu_serialno",
 						"type": "String"
 					}
 				]
