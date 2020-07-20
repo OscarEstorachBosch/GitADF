@@ -1,0 +1,24 @@
+{
+	"name": "Until Demo",
+	"properties": {
+		"activities": [
+			{
+				"name": "Until True",
+				"type": "Until",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@bool('true')",
+						"type": "Expression"
+					},
+					"timeout": "7.00:00:00"
+				}
+			}
+		],
+		"folder": {
+			"name": "Section 5"
+		},
+		"annotations": []
+	}
+}
