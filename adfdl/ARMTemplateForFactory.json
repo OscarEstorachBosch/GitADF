@@ -5927,7 +5927,7 @@
 			"properties": {
 				"activities": [
 					{
-						"name": "Lookup Customer Data",
+						"name": "Lookup Year",
 						"type": "Lookup",
 						"dependsOn": [],
 						"policy": {
@@ -5942,7 +5942,7 @@
 							"source": {
 								"type": "AzureSqlSource",
 								"sqlReaderStoredProcedureName": "[[dbo].[salesYear]",
-								"queryTimeout": "02:00:00"
+								"queryTimeout": "01:20:00"
 							},
 							"dataset": {
 								"referenceName": "DSAzureSqlTableCustomer",
@@ -5950,6 +5950,37 @@
 								"parameters": {}
 							},
 							"firstRowOnly": false
+						}
+					},
+					{
+						"name": "ForEach Year",
+						"type": "ForEach",
+						"dependsOn": [
+							{
+								"activity": "Lookup Year",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"items": {
+								"value": "@activity('Lookup Year').output.value",
+								"type": "Expression"
+							},
+							"isSequential": true,
+							"activities": [
+								{
+									"name": "Wait1",
+									"type": "Wait",
+									"dependsOn": [],
+									"userProperties": [],
+									"typeProperties": {
+										"waitTimeInSeconds": 2
+									}
+								}
+							]
 						}
 					}
 				],
@@ -6092,6 +6123,44 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/DS_DelimitedText_Blob_Country')]"
 			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Until Demo')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Until Time",
+						"type": "Until",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"expression": {
+								"value": "@greater(utcnow(),'2020-07-20T08:55:31.4290281Z')",
+								"type": "Expression"
+							},
+							"activities": [
+								{
+									"name": "Wait1",
+									"type": "Wait",
+									"dependsOn": [],
+									"userProperties": [],
+									"typeProperties": {
+										"waitTimeInSeconds": 3
+									}
+								}
+							],
+							"timeout": "7.00:00:00"
+						}
+					}
+				],
+				"folder": {
+					"name": "Section 5"
+				},
+				"annotations": []
+			},
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/wait')]",
@@ -8760,44 +8829,6 @@
 				"typeProperties": {
 					"connectionString": "[parameters('LS_BlobStorage_PJA_connectionString')]"
 				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Until Demo')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Until True",
-						"type": "Until",
-						"dependsOn": [],
-						"userProperties": [],
-						"typeProperties": {
-							"expression": {
-								"value": "@bool('true')",
-								"type": "Expression"
-							},
-							"activities": [
-								{
-									"name": "Wait1",
-									"type": "Wait",
-									"dependsOn": [],
-									"userProperties": [],
-									"typeProperties": {
-										"waitTimeInSeconds": 5
-									}
-								}
-							],
-							"timeout": "7.00:00:00"
-						}
-					}
-				],
-				"folder": {
-					"name": "Section 5"
-				},
-				"annotations": []
 			},
 			"dependsOn": []
 		}
