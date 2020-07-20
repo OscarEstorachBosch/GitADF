@@ -12,6 +12,17 @@
 						"value": "@bool('true')",
 						"type": "Expression"
 					},
+					"activities": [
+						{
+							"name": "Wait1",
+							"type": "Wait",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"waitTimeInSeconds": 5
+							}
+						}
+					],
 					"timeout": "7.00:00:00"
 				}
 			}
