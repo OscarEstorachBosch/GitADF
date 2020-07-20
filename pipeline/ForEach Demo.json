@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Lookup Customer Data",
+				"name": "Lookup Year",
 				"type": "Lookup",
 				"dependsOn": [],
 				"policy": {
@@ -18,13 +18,44 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderStoredProcedureName": "[dbo].[salesYear]",
-						"queryTimeout": "02:00:00"
+						"queryTimeout": "01:20:00"
 					},
 					"dataset": {
 						"referenceName": "DSAzureSqlTableCustomer",
 						"type": "DatasetReference"
 					},
 					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "ForEach Year",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Lookup Year",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Lookup Year').output.value",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "Wait1",
+							"type": "Wait",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"waitTimeInSeconds": 2
+							}
+						}
+					]
 				}
 			}
 		],
