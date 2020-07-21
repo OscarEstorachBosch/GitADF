@@ -1,0 +1,15 @@
+{
+	"name": "dataflow1",
+	"properties": {
+		"folder": {
+			"name": "dataflowTutorial"
+		},
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [],
+			"sinks": [],
+			"transformations": [],
+			"script": ""
+		}
+	}
+}
