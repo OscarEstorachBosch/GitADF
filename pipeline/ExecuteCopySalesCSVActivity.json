@@ -1,0 +1,9 @@
+{
+	"name": "ExecuteCopySalesCSVActivity",
+	"properties": {
+		"folder": {
+			"name": "Seccion 6"
+		},
+		"annotations": []
+	}
+}
