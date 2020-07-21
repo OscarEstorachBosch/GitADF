@@ -5991,7 +5991,7 @@
 												"Per_year": {
 													"type": "Int32",
 													"value": {
-														"value": "item().Year",
+														"value": "@int(item().Year)",
 														"type": "Expression"
 													}
 												}
@@ -6343,6 +6343,24 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/LSAzureDataLakeStorageConnection')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DSSqlTable')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LSAzureSqlDatabase_connection",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LSAzureSqlDatabase_connection')]"
 			]
 		},
 		{
@@ -7701,6 +7719,37 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/DS_AzureDatalake_CSV')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LSAzureDataLakeStorageConnection",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": {
+							"value": "@concat('Sale_in_',item().Year,'.csv')",
+							"type": "Expression"
+						},
+						"fileSystem": "output"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LSAzureDataLakeStorageConnection')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/DS_AzureSqlTable_Centros')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -8879,55 +8928,6 @@
 				}
 			},
 			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DSSqlTable')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "LSAzureSqlDatabase_connection",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [],
-				"typeProperties": {}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/LSAzureSqlDatabase_connection')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DS_AzureDatalake_CSV')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "LSAzureDataLakeStorageConnection",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobFSLocation",
-						"fileName": {
-							"value": "@concat('Sale_in_',item().Year,'.csv')",
-							"type": "Expression"
-						},
-						"fileSystem": "output"
-					},
-					"columnDelimiter": ",",
-					"escapeChar": "\\",
-					"firstRowAsHeader": true,
-					"quoteChar": "\""
-				},
-				"schema": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/LSAzureDataLakeStorageConnection')]"
-			]
 		}
 	]
 }

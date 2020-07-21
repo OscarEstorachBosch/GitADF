@@ -13,6 +13,74 @@
 	},
 	"resources": [
 		{
+			"name": "[concat(parameters('factoryName'), '/DS_DelimitedText_TM_OTS')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_BlobStorage_PJA",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "DS_PJA/Imput"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "tm_ots.csv",
+						"container": "pja"
+					},
+					"columnDelimiter": ";",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "tm_ots_id;id_emp;mand;id_ot;ancho;cantidad;cantidad_prevista;cantidad_real;cantidad_rprev;consum_stk;dta_ult_op;duracion;estado;factor_impl;fase;fcic;fecha_entrega;finished_at;started_at;genera_stk;grup_impl;id_almacen;id_art;id_incid;id_lote;id_of;maq_prevista;medidas;metros;modo_impl;no_expor;num_ops;ops_previsto;opsp_previsto;ord;rend_empl;rend_maq;rend_oper;rend_ot;rend_prep;ritmo;ritmo_real;sid;tarjeta;tiempo;tiempo_previsto;tiempo_real;tintas;type;tprep;tprep_previsto;txst;empl_previsto;id_emple;initial_latitude;initial_longitude;final_longitude;final_latitude;id_puesto;id_cat;id_sec;duracion_sec;segundos;minutos;horas;dias;id_tipo_material;tipo_material;initial_keydata;keyidart;nnoo1;nnoo2;nnoo3;nnoo4;nnoo5;nnoo6;zva0_10;zva1_10;zva2_10;zvc0_10;zvc1_10;zvc2_10;zvc3_10;zvc4_10;zvd0_10;zvd1_10;zvd2_10;zvd3_10;zvd4_10;zvd5_10;zvd6_10;nnoo19;nnoo20;nnoo21;nnoo22;nnoo23;nnoo24;nnoo25;nnoo26;nnoo27;nnoo28;nnoo29;nnoo34;nnoo35;nnoo36;nnoo37;nnoo38;nnoo39;nnoo40;nnoo41;nnoo42;nnoo43;nnoo44;nnoo45;nnoo46;nnoo47;nnoo48;nnoo49;nnoo50;nnoo51;nnoo52;nnoo53;nnoo54;nnoo55;nnoo56;nnoo57;nnoo58;nnoo59;nnoo60;nnoo61;nnoo64;nnoo67;nnoo68;usuario;crtim;ultimo_mov;fecha;id_motivo_desprog;nextout;nextoutinicio;dta_upd_est;nextoutkm;id_sec_of;anulada;description;belt;var1;var2;final_keydata;id_ot_internal;tm_incid_maquina_id;mant_type_planned;mant_type;tasks;id_cliente;priority;tm_empleados_id;read;id_cent_ot;id_cliente_var;ot_erp;punctuality;punctuality_margin;punctuality_margin_sec;empty_km;load_quantity;net_duration_sec;nnoo30;nnoo31;nnoo32;nnoo33;nnoo69;nnoo7;nnoo71;nnoo75;nnoo76;nnoo8;nnoo80;nnoo82;nnoo84;nnoo9;updatable;zva3_10;zva4_10;zva5_10;created_at;updated_at;created_by;id_cliente_bien;tm_clientes_id;distance;calc_mode;tm_materiales_id;simulation;related_tm_ots_id;confirmed_at;confirmed_by;tm_maquinas_id;keycliente;tm_empresas_id;tm_categoria_id;tm_secciones_id;motivos_desprog;id_anulacio",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_DelimitedText_empleados')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_BlobStorage_PJA",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "DS_PJA/Imput"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "tm_empleados.csv",
+						"container": "pja"
+					},
+					"columnDelimiter": ";",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "tm_empleados_id;id_emple;c_pos;n_ss;activo;banco;cc;derechos;direccion;dni;dta_ult_upd;email;estado;estado_civil;experiencia;fecha_alta;fecha_baja;fecha_nac;foto;grupo_trabajo;hora_extra;hora_nocturna;hora_normal;id_calc_prima;id_calendar;id_clhor;id_emp;huella;id_tarifa;idioma;interv_mdoble;loc_nac;modo_saldo;no_presencia;nombre;num_matricula;observaciones;paso;paso_minimo;pena_mdoble;plus_hora;poblacion;povincia;prv_nac;sexo;sid;taquilla;tarjeta;tel_movil;telefono;tip_horario;id_cat;id_puesto;id_sec;latitude;longitude;ult_tip_serv;ult_tip_desc;dta_ult_upp;prog_ult_tip_serv;prev_ult_tip_serv;prog_dta_ult_upd;prev_dta_ult_upd;prev_ult_tip_desc;prog_ult_tip_desc;clase;password;tm_pres_id;app_version;indefinite_contract;created_at;updated_at;created_by;tm_categoria_id;tm_puestos_trabajo_id",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/DS_DelimitedText_maquinas')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -703,51 +771,6 @@
 					"schema": "dbo",
 					"table": "tm_secciones"
 				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DSSqlTable')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "LSAzureSqlDatabase_connection",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [],
-				"typeProperties": {}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DS_AzureDatalake_CSV')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "LSAzureDataLakeStorageConnection",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobFSLocation",
-						"fileName": {
-							"value": "@concat('Sale_in_',item().Year,'.csv')",
-							"type": "Expression"
-						},
-						"fileSystem": "output"
-					},
-					"columnDelimiter": ",",
-					"escapeChar": "\\",
-					"firstRowAsHeader": true,
-					"quoteChar": "\""
-				},
-				"schema": []
 			},
 			"dependsOn": []
 		},
@@ -6292,11 +6315,13 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/Ds_DelimitedText_Centros')]",
+				"[concat(variables('factoryId'), '/datasets/DS_DelimitedText_empleados')]",
 				"[concat(variables('factoryId'), '/datasets/DS_SqlTableEmpleados')]",
 				"[concat(variables('factoryId'), '/datasets/DS_SqlTable_Calendario')]",
 				"[concat(variables('factoryId'), '/datasets/DS_DelimitedText_maquinas')]",
 				"[concat(variables('factoryId'), '/datasets/ds_DelimitedText_secciones')]",
-				"[concat(variables('factoryId'), '/datasets/ds_sqltables_tm_secciones')]"
+				"[concat(variables('factoryId'), '/datasets/ds_sqltables_tm_secciones')]",
+				"[concat(variables('factoryId'), '/datasets/DS_DelimitedText_TM_OTS')]"
 			]
 		},
 		{
@@ -6670,7 +6695,7 @@
 												"Per_year": {
 													"type": "Int32",
 													"value": {
-														"value": "item().Year",
+														"value": "@int(item().Year)",
 														"type": "Expression"
 													}
 												}
@@ -6714,10 +6739,7 @@
 				},
 				"annotations": []
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/DSSqlTable')]",
-				"[concat(variables('factoryId'), '/datasets/DS_AzureDatalake_CSV')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/Get Metadata')]",
