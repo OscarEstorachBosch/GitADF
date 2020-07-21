@@ -17,7 +17,11 @@
 			],
 			"sinks": [
 				{
-					"name": "sink1"
+					"dataset": {
+						"referenceName": "DS_Output_Sales_File_2014_2019_USA_UK_IND",
+						"type": "DatasetReference"
+					},
+					"name": "sinkSales"
 				}
 			],
 			"transformations": [
@@ -25,7 +29,7 @@
 					"name": "FilterSalesYear"
 				}
 			],
-			"script": "source(output(\n\t\tCountry as string,\n\t\tYear as integer,\n\t\tProduct_Type as string,\n\t\tSales as integer\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false) ~> sourcecsv\nsourcecsv filter(Year == 2017) ~> FilterSalesYear\nFilterSalesYear sink(skipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
+			"script": "source(output(\n\t\tCountry as string,\n\t\tYear as integer,\n\t\tProduct_Type as string,\n\t\tSales as integer\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false) ~> sourcecsv\nsourcecsv filter(Year == 2017) ~> FilterSalesYear\nFilterSalesYear sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:['sales_2017.csv'],\n\tpartitionBy('hash', 1),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sinkSales"
 		}
 	}
 }
