@@ -1,5 +1,5 @@
 {
-	"name": "ExecuteCopySalesCSVActivity",
+	"name": "Execute Copy Sales CSV Activity",
 	"properties": {
 		"folder": {
 			"name": "Seccion 6"
