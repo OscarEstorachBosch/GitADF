@@ -6,7 +6,7 @@
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
-			"name": "Seccion6"
+			"name": "Seccion6/Input"
 		},
 		"annotations": [],
 		"type": "DelimitedText",
