@@ -1,0 +1,43 @@
+{
+	"name": "Ds_Sales_File_2014_2019_USA_UK_IND",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LSAzureBlobStorageConnection",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Seccion6"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Sales_File_2014_2019_USA_UK_IND.csv",
+				"container": "inputseccion6"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Country",
+				"type": "String"
+			},
+			{
+				"name": "Year",
+				"type": "String"
+			},
+			{
+				"name": "Product_Type",
+				"type": "String"
+			},
+			{
+				"name": "Sales",
+				"type": "String"
+			}
+		]
+	}
+}
