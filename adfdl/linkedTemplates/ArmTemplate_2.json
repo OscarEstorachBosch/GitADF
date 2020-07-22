@@ -13,45 +13,130 @@
 	},
 	"resources": [
 		{
-			"name": "[concat(parameters('factoryName'), '/Execute Copy Sales CSV Activity')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
+			"name": "[concat(parameters('factoryName'), '/Find_Aggregates_Data')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
 			"apiVersion": "2018-06-01",
 			"properties": {
-				"activities": [
-					{
-						"name": "CopyCSV",
-						"type": "ExecuteDataFlow",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"dataflow": {
-								"referenceName": "CopyCSV",
-								"type": "DataFlowReference",
-								"parameters": {},
-								"datasetParameters": {
-									"SourceCSVFile": {},
-									"sink1": {}
-								}
-							},
-							"staging": {},
-							"compute": {
-								"coreCount": 8,
-								"computeType": "General"
-							}
-						}
-					}
-				],
 				"folder": {
-					"name": "Seccion 6"
+					"name": "dataflowTutorial"
 				},
-				"annotations": []
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"dataset": {
+								"referenceName": "Ds_Sales_File_2014_2019_USA_UK_IND",
+								"type": "DatasetReference"
+							},
+							"name": "SourceCSVFile"
+						}
+					],
+					"sinks": [
+						{
+							"dataset": {
+								"referenceName": "DS_Output_Sales_File_2014_2019_USA_UK_IND",
+								"type": "DatasetReference"
+							},
+							"name": "sink1"
+						}
+					],
+					"transformations": [
+						{
+							"name": "AggregateResult"
+						}
+					],
+					"script": "source(output(\n\t\tCountry as string,\n\t\tYear as string,\n\t\tProduct_Type as string,\n\t\tSales as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false) ~> SourceCSVFile\nSourceCSVFile aggregate(groupBy(Country),\n\t{Total Sales} = sum(toInteger(Sales)),\n\t\tMax = max(toInteger(Sales)),\n\t\t{Min Sales} = min(toInteger(Sales))) ~> AggregateResult\nAggregateResult sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:['Agg_sales.csv'],\n\tpartitionBy('hash', 1),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/CondicionalSplit')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"folder": {
+					"name": "dataflowTutorial"
+				},
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"dataset": {
+								"referenceName": "DS_DelimitedText_CONDITIOINAL_SPLIT",
+								"type": "DatasetReference"
+							},
+							"name": "sourceSPLIT"
+						}
+					],
+					"sinks": [
+						{
+							"dataset": {
+								"referenceName": "DelimitedTextOutput",
+								"type": "DatasetReference"
+							},
+							"name": "sinkUSAUK"
+						},
+						{
+							"dataset": {
+								"referenceName": "DelimitedTextOutput",
+								"type": "DatasetReference"
+							},
+							"name": "sinkUsaIndia"
+						},
+						{
+							"dataset": {
+								"referenceName": "DelimitedTextOutput",
+								"type": "DatasetReference"
+							},
+							"name": "sinkDefault"
+						}
+					],
+					"transformations": [
+						{
+							"name": "ConditionalSplitCOUNTRY"
+						}
+					],
+					"script": "source(output(\n\t\tRow as string,\n\t\tCountry as string,\n\t\tYear as string,\n\t\tProduct_Type as string,\n\t\tSales as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false) ~> sourceSPLIT\nsourceSPLIT split(Country=='USA' || Country=='UK',\n\tCountry=='USA'||Country=='IND',\n\tdisjoint: true) ~> ConditionalSplitCOUNTRY@(USAUK, USAIND, Default)\nConditionalSplitCOUNTRY@USAUK sink(input(\n\t\tColumn_1 as string,\n\t\tColumn_2 as string,\n\t\tColumn_3 as string,\n\t\tColumn_4 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:['usa_uk.csv'],\n\tpartitionBy('hash', 1),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sinkUSAUK\nConditionalSplitCOUNTRY@USAIND sink(input(\n\t\tColumn_1 as string,\n\t\tColumn_2 as string,\n\t\tColumn_3 as string,\n\t\tColumn_4 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:['usa_india_csv'],\n\tpartitionBy('hash', 1),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sinkUsaIndia\nConditionalSplitCOUNTRY@Default sink(input(\n\t\tColumn_1 as string,\n\t\tColumn_2 as string,\n\t\tColumn_3 as string,\n\t\tColumn_4 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:['default.csv'],\n\tpartitionBy('hash', 1),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sinkDefault"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/dataflowFilter')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"folder": {
+					"name": "dataflowTutorial"
+				},
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"dataset": {
+								"referenceName": "Ds_Sales_File_2014_2019_USA_UK_IND",
+								"type": "DatasetReference"
+							},
+							"name": "sourcecsv"
+						}
+					],
+					"sinks": [
+						{
+							"dataset": {
+								"referenceName": "DS_Output_Sales_File_2014_2019_USA_UK_IND",
+								"type": "DatasetReference"
+							},
+							"name": "sinkSales"
+						}
+					],
+					"transformations": [
+						{
+							"name": "FilterSalesYear"
+						}
+					],
+					"script": "source(output(\n\t\tCountry as string,\n\t\tYear as integer,\n\t\tProduct_Type as string,\n\t\tSales as integer\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false) ~> sourcecsv\nsourcecsv filter(Year == 2017) ~> FilterSalesYear\nFilterSalesYear sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:['sales_2017.csv'],\n\tpartitionBy('hash', 1),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sinkSales"
+				}
 			},
 			"dependsOn": []
 		},
@@ -76,6 +161,51 @@
 						"typeProperties": {
 							"dataflow": {
 								"referenceName": "Find_Aggregates_Data",
+								"type": "DataFlowReference",
+								"parameters": {},
+								"datasetParameters": {
+									"SourceCSVFile": {},
+									"sink1": {}
+								}
+							},
+							"staging": {},
+							"compute": {
+								"coreCount": 8,
+								"computeType": "General"
+							}
+						}
+					}
+				],
+				"folder": {
+					"name": "Seccion 6"
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/dataflows/Find_Aggregates_Data')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Execute Copy Sales CSV Activity')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "CopyCSV",
+						"type": "ExecuteDataFlow",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataflow": {
+								"referenceName": "CopyCSV",
 								"type": "DataFlowReference",
 								"parameters": {},
 								"datasetParameters": {
@@ -139,7 +269,56 @@
 				},
 				"annotations": []
 			},
-			"dependsOn": []
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/dataflows/dataflowFilter')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Demo_condicional_split')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "CondicionalSplit",
+						"type": "ExecuteDataFlow",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataflow": {
+								"referenceName": "CondicionalSplit",
+								"type": "DataFlowReference",
+								"parameters": {},
+								"datasetParameters": {
+									"sourceSPLIT": {},
+									"sinkUSAUK": {},
+									"sinkUsaIndia": {},
+									"sinkDefault": {}
+								}
+							},
+							"staging": {},
+							"compute": {
+								"coreCount": 8,
+								"computeType": "General"
+							}
+						}
+					}
+				],
+				"folder": {
+					"name": "Seccion 6"
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/dataflows/CondicionalSplit')]"
+			]
 		}
 	]
 }
