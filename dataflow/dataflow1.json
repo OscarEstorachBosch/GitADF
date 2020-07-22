@@ -21,13 +21,21 @@
 						"referenceName": "DelimitedTextOutput",
 						"type": "DatasetReference"
 					},
-					"name": "sinkESAUK"
+					"name": "sinkUSAUK"
 				},
 				{
-					"name": "sink2"
+					"dataset": {
+						"referenceName": "DelimitedTextOutput",
+						"type": "DatasetReference"
+					},
+					"name": "sinkUsaIndia"
 				},
 				{
-					"name": "sink3"
+					"dataset": {
+						"referenceName": "DelimitedTextOutput",
+						"type": "DatasetReference"
+					},
+					"name": "sinkDefault"
 				}
 			],
 			"transformations": [
@@ -35,7 +43,7 @@
 					"name": "ConditionalSplitCOUNTRY"
 				}
 			],
-			"script": "source(output(\n\t\tRow as string,\n\t\tCountry as string,\n\t\tYear as string,\n\t\tProduct_Type as string,\n\t\tSales as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false) ~> sourceSPLIT\nsourceSPLIT split(Country=='USA' || Country=='UK',\n\tCountry=='USA'||Country=='IND',\n\tdisjoint: true) ~> ConditionalSplitCOUNTRY@(USA_UK, USA_IND, Default)\nConditionalSplitCOUNTRY@USA_UK sink(input(\n\t\tColumn_1 as string,\n\t\tColumn_2 as string,\n\t\tColumn_3 as string,\n\t\tColumn_4 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sinkESAUK\nConditionalSplitCOUNTRY@USA_IND sink(skipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink2\nConditionalSplitCOUNTRY@Default sink(skipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink3"
+			"script": "source(output(\n\t\tRow as string,\n\t\tCountry as string,\n\t\tYear as string,\n\t\tProduct_Type as string,\n\t\tSales as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false) ~> sourceSPLIT\nsourceSPLIT split(Country=='USA' || Country=='UK',\n\tCountry=='USA'||Country=='IND',\n\tdisjoint: true) ~> ConditionalSplitCOUNTRY@(USAUK, USAIND, Default)\nConditionalSplitCOUNTRY@USAUK sink(input(\n\t\tColumn_1 as string,\n\t\tColumn_2 as string,\n\t\tColumn_3 as string,\n\t\tColumn_4 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:['usa_uk.csv'],\n\tpartitionBy('hash', 1),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sinkUSAUK\nConditionalSplitCOUNTRY@USAIND sink(input(\n\t\tColumn_1 as string,\n\t\tColumn_2 as string,\n\t\tColumn_3 as string,\n\t\tColumn_4 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:['usa_india_csv'],\n\tpartitionBy('hash', 1),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sinkUsaIndia\nConditionalSplitCOUNTRY@Default sink(input(\n\t\tColumn_1 as string,\n\t\tColumn_2 as string,\n\t\tColumn_3 as string,\n\t\tColumn_4 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:['default.csv'],\n\tpartitionBy('hash', 1),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sinkDefault"
 		}
 	}
 }
