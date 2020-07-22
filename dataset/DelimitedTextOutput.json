@@ -1,0 +1,37 @@
+{
+	"name": "DelimitedTextOutput",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LSAzureDataLakeStorageConnection",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Seccion6/Output"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "outputseccion6"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"type": "String"
+			},
+			{
+				"type": "String"
+			},
+			{
+				"type": "String"
+			},
+			{
+				"type": "String"
+			}
+		]
+	}
+}
