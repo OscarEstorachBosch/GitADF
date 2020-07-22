@@ -23,18 +23,23 @@
 		},
 		"schema": [
 			{
+				"name": "Row",
 				"type": "String"
 			},
 			{
+				"name": "Country",
 				"type": "String"
 			},
 			{
+				"name": "Year",
 				"type": "String"
 			},
 			{
+				"name": "Product_Type",
 				"type": "String"
 			},
 			{
+				"name": "Sales",
 				"type": "String"
 			}
 		]
