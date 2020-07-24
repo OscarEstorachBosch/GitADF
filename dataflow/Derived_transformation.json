@@ -15,13 +15,21 @@
 					"name": "sourceSales"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedTextOutput",
+						"type": "DatasetReference"
+					},
+					"name": "sinkDerived"
+				}
+			],
 			"transformations": [
 				{
 					"name": "DerivedColumnSales"
 				}
 			],
-			"script": "source(output(\n\t\tRow as string,\n\t\tCountry as string,\n\t\tSales as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false) ~> sourceSales\nsourceSales derive(Year = toInteger(trim(right(Country, 6),'()')),\n\t\tCountry = ERROR_FUNCTION('')) ~> DerivedColumnSales"
+			"script": "source(output(\n\t\tRow as string,\n\t\tCountry as string,\n\t\tSales as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false) ~> sourceSales\nsourceSales derive(Year = toInteger(trim(right(Country, 6),'()')),\n\t\tCountry = toString(left(Country, length(Country)-6)),\n\tpartitionBy('hash', 1)) ~> DerivedColumnSales\nDerivedColumnSales sink(input(\n\t\tColumn_1 as string,\n\t\tColumn_2 as string,\n\t\tColumn_3 as string,\n\t\tColumn_4 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:['Derived.csv'],\n\tpartitionBy('hash', 1),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sinkDerived"
 		}
 	}
 }
