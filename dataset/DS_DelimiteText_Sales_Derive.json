@@ -1,0 +1,39 @@
+{
+	"name": "DS_DelimiteText_Sales_Derive",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LSAzureBlobStorageConnection",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Seccion6"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Sales_Derive.csv",
+				"container": "input"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Row",
+				"type": "String"
+			},
+			{
+				"name": "Country",
+				"type": "String"
+			},
+			{
+				"name": "Sales",
+				"type": "String"
+			}
+		]
+	}
+}
