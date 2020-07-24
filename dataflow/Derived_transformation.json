@@ -1,0 +1,27 @@
+{
+	"name": "Derived_transformation",
+	"properties": {
+		"folder": {
+			"name": "dataflowTutorial"
+		},
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "DS_DelimiteText_Sales_Derive",
+						"type": "DatasetReference"
+					},
+					"name": "sourceSales"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "DerivedColumnSales"
+				}
+			],
+			"script": "source(output(\n\t\tRow as string,\n\t\tCountry as string,\n\t\tSales as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false) ~> sourceSales\nsourceSales derive(Year = toInteger(trim(right(Country, 6),'()')),\n\t\tCountry = ERROR_FUNCTION('')) ~> DerivedColumnSales"
+		}
+	}
+}
