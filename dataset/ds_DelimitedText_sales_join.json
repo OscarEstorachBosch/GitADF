@@ -1,0 +1,47 @@
+{
+	"name": "ds_DelimitedText_sales_join",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LSAzureBlobStorageConnection",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Seecion7/input"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Sales_Join_left.csv",
+				"container": "inputseccion7"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Row",
+				"type": "String"
+			},
+			{
+				"name": "Country",
+				"type": "String"
+			},
+			{
+				"name": "Year",
+				"type": "String"
+			},
+			{
+				"name": "Sales",
+				"type": "String"
+			},
+			{
+				"name": "Cust_id",
+				"type": "String"
+			}
+		]
+	}
+}
