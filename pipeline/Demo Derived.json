@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "Derived_transformation",
+						"referenceName": "SortedTransformation",
 						"type": "DataFlowReference"
 					},
 					"compute": {
