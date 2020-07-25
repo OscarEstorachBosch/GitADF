@@ -1,5 +1,5 @@
 {
-	"name": "Derived_transformation",
+	"name": "SortedTransformation",
 	"properties": {
 		"folder": {
 			"name": "dataflowTutorial"
