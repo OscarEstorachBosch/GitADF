@@ -123,6 +123,11 @@
 					"referenceName": "LSAzureBlobStorageConnection",
 					"type": "LinkedServiceReference"
 				},
+				"parameters": {
+					"input_filename": {
+						"type": "string"
+					}
+				},
 				"folder": {
 					"name": "Seccion8/Input"
 				},
@@ -131,7 +136,10 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"fileName": "Conditional Split.csv",
+						"fileName": {
+							"value": "@dataset().input_filename",
+							"type": "Expression"
+						},
 						"container": "inputseccion8"
 					},
 					"columnDelimiter": ",",
@@ -982,6 +990,11 @@
 					"referenceName": "LSAzureDataLakeStorageConnection",
 					"type": "LinkedServiceReference"
 				},
+				"parameters": {
+					"output_filename": {
+						"type": "string"
+					}
+				},
 				"folder": {
 					"name": "Seccion8/output"
 				},
@@ -990,7 +1003,10 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
-						"fileName": "zzzz.csv",
+						"fileName": {
+							"value": "@dataset().output_filename",
+							"type": "Expression"
+						},
 						"fileSystem": "outputseccion8"
 					},
 					"columnDelimiter": ",",
@@ -6670,7 +6686,7 @@
 			"properties": {
 				"activities": [
 					{
-						"name": "Copy data from input to output",
+						"name": "Copy data Exists load csv",
 						"type": "Copy",
 						"dependsOn": [],
 						"policy": {
@@ -6685,7 +6701,7 @@
 							"source": {
 								"type": "DelimitedTextSource",
 								"storeSettings": {
-									"type": "AzureBlobFSReadSettings",
+									"type": "AzureBlobStorageReadSettings",
 									"recursive": true
 								},
 								"formatSettings": {
@@ -6717,14 +6733,88 @@
 							{
 								"referenceName": "DS_DelimitedText_condicional_Split",
 								"type": "DatasetReference",
-								"parameters": {}
+								"parameters": {
+									"input_filename": "Exists_load.csv"
+								}
 							}
 						],
 						"outputs": [
 							{
 								"referenceName": "ds_DelimitedText_seccion8split",
 								"type": "DatasetReference",
-								"parameters": {}
+								"parameters": {
+									"output_filename": "Exists_load_output.csv"
+								}
+							}
+						]
+					},
+					{
+						"name": "Copy data Customer Join Right csv",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "Copy data Exists load csv",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "DelimitedTextSource",
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": true
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
+								}
+							},
+							"sink": {
+								"type": "DelimitedTextSink",
+								"storeSettings": {
+									"type": "AzureBlobFSWriteSettings"
+								},
+								"formatSettings": {
+									"type": "DelimitedTextWriteSettings",
+									"quoteAllText": true,
+									"fileExtension": ".txt"
+								}
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "DS_DelimitedText_condicional_Split",
+								"type": "DatasetReference",
+								"parameters": {
+									"input_filename": "Customer_Join_Right.csv"
+								}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "ds_DelimitedText_seccion8split",
+								"type": "DatasetReference",
+								"parameters": {
+									"output_filename": "out_Customer_Join_Right.csv"
+								}
 							}
 						]
 					}
