@@ -13,7 +13,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "outputseccion8_split",
+				"fileName": "outputseccion8Split.csv",
 				"fileSystem": "outputseccion8"
 			},
 			"columnDelimiter": ",",
