@@ -5,6 +5,11 @@
 			"referenceName": "LSAzureBlobStorageConnection",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"input_filename": {
+				"type": "string"
+			}
+		},
 		"folder": {
 			"name": "Seccion8/Input"
 		},
@@ -13,7 +18,10 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "Conditional Split.csv",
+				"fileName": {
+					"value": "@dataset().input_filename",
+					"type": "Expression"
+				},
 				"container": "inputseccion8"
 			},
 			"columnDelimiter": ",",
