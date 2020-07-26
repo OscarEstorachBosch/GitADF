@@ -1024,7 +1024,7 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"fileName": "Conditional Split.csv",
+						"fileName": "Conditional_Split.csv",
 						"container": "inputseccion8"
 					},
 					"columnDelimiter": ",",
