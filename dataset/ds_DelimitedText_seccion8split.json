@@ -5,6 +5,11 @@
 			"referenceName": "LSAzureDataLakeStorageConnection",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"output_filename": {
+				"type": "string"
+			}
+		},
 		"folder": {
 			"name": "Seccion8/output"
 		},
@@ -13,7 +18,10 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "zzzz.csv",
+				"fileName": {
+					"value": "@dataset().output_filename",
+					"type": "Expression"
+				},
 				"fileSystem": "outputseccion8"
 			},
 			"columnDelimiter": ",",
