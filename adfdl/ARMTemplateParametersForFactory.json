@@ -4,6 +4,24 @@
 	"parameters": {
 		"factoryName": {
 			"value": "adfdl"
+		},
+		"LSAzureBlobStorageConnection_connectionString": {
+			"value": ""
+		},
+		"LSAzureDataLakeStorageConnection_accountKey": {
+			"value": ""
+		},
+		"LSAzureSqlDatabase_connection_connectionString": {
+			"value": ""
+		},
+		"LS_AzureBlobStorageDemo_connectionString": {
+			"value": ""
+		},
+		"LS_BlobStorage_PJA_connectionString": {
+			"value": ""
+		},
+		"LSAzureDataLakeStorageConnection_properties_typeProperties_url": {
+			"value": "https://storageadfdl.dfs.core.windows.net"
 		}
 	}
 }

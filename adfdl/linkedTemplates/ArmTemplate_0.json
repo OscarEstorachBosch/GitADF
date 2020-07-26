@@ -1901,6 +1901,50 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/DS_DelimiteText_Sales_Derive')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LSAzureBlobStorageConnection",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Seccion6"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "Sales_Derive.csv",
+						"container": "input"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "Row",
+						"type": "String"
+					},
+					{
+						"name": "Country",
+						"type": "String"
+					},
+					{
+						"name": "Sales",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LSAzureBlobStorageConnection')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/DS_DelimitedText_Blob_Country')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -2015,42 +2059,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/LSAzureBlobStorageConnection')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DS_DelimitedText_Calendario')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "LS_BlobStorage_PJA",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "DS_PJA/Imput"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": "tm_calendario.csv",
-						"container": "pja"
-					},
-					"columnDelimiter": ";",
-					"escapeChar": "\\",
-					"firstRowAsHeader": true,
-					"quoteChar": "\""
-				},
-				"schema": [
-					{
-						"name": "fecha;mes;dia;anno_eco;keydata;diaanno;firstdaymonth;lastdaymonth;año;mestemporada;semana;diasemana;idtemporada;periodo;keyyearmonth;keyyearweek;rank_mestemporada;rank_anno_eco;daysofmonth;fechainiciotemp;fechafintemp;keyidtemporada;keyday;rank_idtemporada;fecha_hora",
-						"type": "String"
-					}
-				]
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/LS_BlobStorage_PJA')]"
 			]
 		}
 	]
