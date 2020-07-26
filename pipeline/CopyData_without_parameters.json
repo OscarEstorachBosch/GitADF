@@ -54,7 +54,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "DS_DelimitedText_condicional_Split",
+						"referenceName": "ds_DelimitedText_seccion8split",
 						"type": "DatasetReference"
 					}
 				]
