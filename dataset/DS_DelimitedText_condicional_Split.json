@@ -1,0 +1,47 @@
+{
+	"name": "DS_DelimitedText_condicional_Split",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LSAzureBlobStorageConnection",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Seccion8/Input"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Conditional Split.csv",
+				"container": "inputseccion8"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Row",
+				"type": "String"
+			},
+			{
+				"name": "Country",
+				"type": "String"
+			},
+			{
+				"name": "Year",
+				"type": "String"
+			},
+			{
+				"name": "Product_Type",
+				"type": "String"
+			},
+			{
+				"name": "Sales",
+				"type": "String"
+			}
+		]
+	}
+}
