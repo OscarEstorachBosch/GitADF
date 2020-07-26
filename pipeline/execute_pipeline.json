@@ -9,10 +9,14 @@
 				"userProperties": [],
 				"typeProperties": {
 					"pipeline": {
-						"referenceName": "CopyData_without_parameters",
+						"referenceName": "Copy data Exists Load",
 						"type": "PipelineReference"
 					},
-					"waitOnCompletion": true
+					"waitOnCompletion": true,
+					"parameters": {
+						"inputFileName": "Sales_Derive.csv",
+						"outputFileName": "zxzxzx.csv"
+					}
 				}
 			}
 		],
