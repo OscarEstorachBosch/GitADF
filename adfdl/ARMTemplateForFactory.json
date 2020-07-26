@@ -9928,7 +9928,7 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"fileName": "Conditional_Split.csv",
+						"fileName": "Conditional Split.csv",
 						"container": "inputseccion8"
 					},
 					"columnDelimiter": ",",
@@ -10041,7 +10041,7 @@
 							"source": {
 								"type": "DelimitedTextSource",
 								"storeSettings": {
-									"type": "AzureBlobFSReadSettings",
+									"type": "AzureBlobStorageReadSettings",
 									"recursive": true
 								},
 								"formatSettings": {
@@ -10071,7 +10071,7 @@
 						},
 						"inputs": [
 							{
-								"referenceName": "ds_DelimitedText_seccion8split",
+								"referenceName": "DS_DelimitedText_condicional_Split",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
@@ -10091,7 +10091,6 @@
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/ds_DelimitedText_seccion8split')]",
 				"[concat(variables('factoryId'), '/datasets/DS_DelimitedText_condicional_Split')]"
 			]
 		}
