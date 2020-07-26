@@ -2,7 +2,7 @@
 	"name": "DS_DelimitedText_condicional_Split",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "LSAzureDataLakeStorageConnection",
+			"referenceName": "LSAzureBlobStorageConnection",
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
@@ -12,9 +12,9 @@
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
-				"type": "AzureBlobFSLocation",
-				"fileName": "outputseccio8split.csv",
-				"fileSystem": "outputseccion8"
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Conditional Split.csv",
+				"container": "inputseccion8"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
