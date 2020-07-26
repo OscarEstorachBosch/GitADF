@@ -18,7 +18,7 @@
 					"source": {
 						"type": "DelimitedTextSource",
 						"storeSettings": {
-							"type": "AzureBlobFSReadSettings",
+							"type": "AzureBlobStorageReadSettings",
 							"recursive": true
 						},
 						"formatSettings": {
@@ -48,7 +48,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "ds_DelimitedText_seccion8split",
+						"referenceName": "DS_DelimitedText_condicional_Split",
 						"type": "DatasetReference"
 					}
 				],
